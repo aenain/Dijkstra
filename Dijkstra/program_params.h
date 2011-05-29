@@ -17,17 +17,17 @@ public:
     static const int VALID_PARAMS_NUMBER = 6;
 
     bool valid();
-    Node start_point();
-    Node finish_point();
+    Node begin_point();
+    Node end_point();
     string open_street_map_source_file();
-    // start_point: { longitude, latitude }
-    // finish_point: { longitude, latitude }
+    // begin_point: { longitude, latitude }
+    // end_point: { longitude, latitude }
     // openstreetmap_source_file
-    ProgramParams(int argc, const char * argv[]) : _start_point("0.0", "0.0"), _finish_point("0.0", "0.0") { validate_after_create(argc, argv); };
+    ProgramParams(int argc, const char * argv[]) : _begin_point("0.0", "0.0"), _end_point("0.0", "0.0") { validate_after_create(argc, argv); };
 
 private:
-    // name of program, coordinates of start and finish, path to source file with openstreetmap data.
-    Node _start_point, _finish_point;
+    // name of program, coordinates of begin and end, path to source file with openstreetmap data.
+    Node _begin_point, _end_point;
     string _open_street_map_source_file;
     bool _valid;
 

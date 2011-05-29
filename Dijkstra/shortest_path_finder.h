@@ -14,12 +14,11 @@ using namespace std;
 class ShortestPathFinder {
 public:
     // type is temporary
-    void between(const Node & start_point, const Node & finish_point);
-    ShortestPathFinder(const Nodes & nodes, const Edges & edges) : _nodes(nodes), _edges(edges) {};
+    void between(const Node & begin_node, const Node & end_node);
+    ShortestPathFinder(const Nodes & nodes) : _nodes(nodes) {};
 
 private:
-    const Nodes _nodes;
-    const Edges _edges;
+    Nodes _nodes;
 };
 
 #endif

@@ -19,10 +19,10 @@ int main (int argc, const char * argv[]) {
         OpenStreetMap open_street_map;
         open_street_map.parse_file(params.open_street_map_source_file());
         cout << "mamy dane!" << endl;
-        if (open_street_map.include(params.start_point()) && open_street_map.include(params.finish_point())) {
-            ShortestPathFinder shortest_path_finder(open_street_map.nodes(), open_street_map.edges());
+        if (open_street_map.include(params.begin_node()) && open_street_map.include(params.end_node())) {
+            ShortestPathFinder shortest_path_finder(open_street_map.nodes());
 
-            //shortest_path_finder.between(params.start_point(), params.finish_point());
+            shortest_path_finder.between(params.begin_node(), params.end_node());
             // TODO! w jakiś sposób trzeba wypisać tą ścieżkę
         }
         else {} // TODO!

@@ -9,7 +9,7 @@
 //
 #include <iostream>
 #include <math.h>
-
+#include "lexical_boost.h"
 
 typedef double Distance;
 
@@ -21,6 +21,14 @@ namespace Numbers {
     inline bool are_equal(const Distance & a, const Distance & b) {
         Distance difference = a - b;
         return (-Numbers::EPSILON < difference && difference <= 0) || (0 <= difference && difference < Numbers::EPSILON);
+    }
+
+    inline Distance to_f(const std::string & literal) {
+        return boost::lexical_cast<Distance>(literal);
+    }
+
+    inline Distance to_f(const char * literal) {
+        return boost::lexical_cast<Distance>(literal);
     }
 }
 

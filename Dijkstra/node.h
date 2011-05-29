@@ -16,13 +16,15 @@ using namespace std;
 class Node {
 public:
     string id;
-    Distance longitude, latitude;
+    Distance latitude, longitude;
     Distance weight;
     priority_queue<Edge<Node> > edges; // dirty hack I know, but works :)
     Node * predecessor; // pointer to predecessor on the shortest path
     bool completely_computed;
     
     Node(const Distance & latitude, const Distance & longitude) : latitude(latitude), longitude(longitude), predecessor(NULL), completely_computed(false) {};
+
+    Node(const string & id, const Distance & latitude, const Distance & longitude) : id(id), latitude(latitude), longitude(longitude), predecessor(NULL), completely_computed(false) {};
 
     bool operator==(const Node & other);
     

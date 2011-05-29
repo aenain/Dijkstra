@@ -10,7 +10,7 @@
 
 template <typename T>
 Distance Edge<T>::compute_weight() {
-    //sqrt( pow(, 2) + pow(, 2) );
+    return sqrt( pow(end.latitude - begin.latitude, 2) + pow(end.longitude - begin.latitude, 2) );
 }
 
 template <typename T>

@@ -15,7 +15,6 @@
 #include "simplexml.h"
 #include "edge.h"
 #include "node.h"
-//#include "ticpp.h"
 
 using namespace std;
 
@@ -24,21 +23,15 @@ public:
     void parse_file(const string & source_file);
     bool include(const Node & node);
     Nodes nodes();
-    Edges edges();
-    //OpenStreetMap(); // TODO! zaincjalizować _nodes i _edges
+    //OpenStreetMap(); // TODO! zaincjalizować _nodes
 
 private:
     string _source_file;
     Nodes _nodes;
-    Edges _edges;
 
     void read_file_into_string(const string & source_file, string & xml);
     Nodes fetch_nodes(simplexml * const xml_tree);
-    Edges fetch_edges(simplexml * const xml_tree);
-/*
-    Nodes fetch_nodes(const TiXmlHandle docHandle);
-    Edges fetch_edges(const TiXmlHandle docHandle);
-*/
+    void fetch_edges_for_nodes(simplexml * const xml_tree);
 };
 
 #endif

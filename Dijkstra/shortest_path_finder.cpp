@@ -9,4 +9,8 @@
 #include "shortest_path_finder.h"
 using namespace std;
 
-void ShortestPathFinder::between(const Node & start_point, const Node & finish_point) {}
+void ShortestPathFinder::between(const Node & begin_node, const Node & end_node) {
+    // time for Dijkstra :)
+    // in map _nodes are nodes.
+    // TODO! it's better to change in class Edge begin and end to string (id of nodes instead of nodes (problem with lot of duplicates and inconsistence of them)
+}
