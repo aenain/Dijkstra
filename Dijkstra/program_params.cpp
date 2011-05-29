@@ -22,8 +22,7 @@ Node ProgramParams::finish_point() {
 }
 
 string ProgramParams::open_street_map_source_file() {
-    string a;
-    return a;
+    return _open_street_map_source_file;
 }
 
 void ProgramParams::validate_after_create(int argc, const char * argv[]) {

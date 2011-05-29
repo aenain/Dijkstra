@@ -10,6 +10,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "simplexml.h"
+//#include "ticpp.h"
+
 using namespace std;
 
 struct Node {
@@ -19,10 +22,11 @@ struct Node {
 };
 
 struct Edge {
-    const Node * const start;
-    const Node * const finish;
+    Node * start;
+    Node * finish;
     int weight;
-    Edge(const Node * const start, const Node * const finish, int weight) : start(start), finish(finish), weight(weight) {};
+    void compute_and_set_weight();
+    Edge(Node * const start, Node * const finish, int weight) : start(start), finish(finish), weight(weight) {};
 };
 
 typedef vector<Node> Nodes;
@@ -40,6 +44,14 @@ private:
     string _source_file;
     Nodes _nodes;
     Edges _edges;
+
+    void read_file_into_string(const string & source_file, string & xml);
+    Nodes fetch_nodes(simplexml * const xml_tree);
+    Edges fetch_edges(simplexml * const xml_tree);
+/*
+    Nodes fetch_nodes(const TiXmlHandle docHandle);
+    Edges fetch_edges(const TiXmlHandle docHandle);
+*/
 };
 
 #endif

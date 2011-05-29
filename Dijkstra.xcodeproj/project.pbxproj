@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		717AE964139103210023675F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 717AE963139103210023675F /* main.cpp */; };
-		71AEAC4B1391E9FD00BFFAC7 /* simplexml.cc in Sources */ = {isa = PBXBuildFile; fileRef = 71AEAC491391E9FD00BFFAC7 /* simplexml.cc */; };
 		71AEAC561391EFB700BFFAC7 /* program_params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71AEAC541391EFB700BFFAC7 /* program_params.cpp */; };
 		71D325A81391D1B000C9BDB2 /* open_street_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71D325A61391D1B000C9BDB2 /* open_street_map.cpp */; };
 		71D325AB1391D58C00C9BDB2 /* shortest_path_finder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71D325A91391D58C00C9BDB2 /* shortest_path_finder.cpp */; };
+		71EB17C313927DE000F74DE8 /* simplexml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71EB17C213927DE000F74DE8 /* simplexml.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,14 +30,14 @@
 		717AE95F139103210023675F /* Dijkstra */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Dijkstra; sourceTree = BUILT_PRODUCTS_DIR; };
 		717AE963139103210023675F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		717AE965139103210023675F /* Dijkstra.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Dijkstra.1; sourceTree = "<group>"; };
-		71AEAC491391E9FD00BFFAC7 /* simplexml.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simplexml.cc; path = "../../../Downloads/simplexml-1.0/lib/simplexml.cc"; sourceTree = "<group>"; };
-		71AEAC4A1391E9FD00BFFAC7 /* simplexml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simplexml.h; path = "../../../Downloads/simplexml-1.0/lib/simplexml.h"; sourceTree = "<group>"; };
 		71AEAC541391EFB700BFFAC7 /* program_params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = program_params.cpp; sourceTree = "<group>"; };
 		71AEAC551391EFB700BFFAC7 /* program_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = program_params.h; sourceTree = "<group>"; };
 		71D325A61391D1B000C9BDB2 /* open_street_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = open_street_map.cpp; sourceTree = "<group>"; };
 		71D325A71391D1B000C9BDB2 /* open_street_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = open_street_map.h; sourceTree = "<group>"; };
 		71D325A91391D58C00C9BDB2 /* shortest_path_finder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shortest_path_finder.cpp; sourceTree = "<group>"; };
 		71D325AA1391D58C00C9BDB2 /* shortest_path_finder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shortest_path_finder.h; sourceTree = "<group>"; };
+		71EB17C213927DE000F74DE8 /* simplexml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simplexml.cpp; sourceTree = "<group>"; };
+		71EB17C413927E1300F74DE8 /* simplexml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simplexml.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +86,8 @@
 		71AEAC481391E9D600BFFAC7 /* SimpleXML */ = {
 			isa = PBXGroup;
 			children = (
-				71AEAC491391E9FD00BFFAC7 /* simplexml.cc */,
-				71AEAC4A1391E9FD00BFFAC7 /* simplexml.h */,
+				71EB17C213927DE000F74DE8 /* simplexml.cpp */,
+				71EB17C413927E1300F74DE8 /* simplexml.h */,
 			);
 			name = SimpleXML;
 			sourceTree = "<group>";
@@ -145,8 +145,8 @@
 				717AE964139103210023675F /* main.cpp in Sources */,
 				71D325A81391D1B000C9BDB2 /* open_street_map.cpp in Sources */,
 				71D325AB1391D58C00C9BDB2 /* shortest_path_finder.cpp in Sources */,
-				71AEAC4B1391E9FD00BFFAC7 /* simplexml.cc in Sources */,
 				71AEAC561391EFB700BFFAC7 /* program_params.cpp in Sources */,
+				71EB17C313927DE000F74DE8 /* simplexml.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
