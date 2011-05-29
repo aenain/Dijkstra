@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		717AE964139103210023675F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 717AE963139103210023675F /* main.cpp */; };
 		71AEAC4B1391E9FD00BFFAC7 /* simplexml.cc in Sources */ = {isa = PBXBuildFile; fileRef = 71AEAC491391E9FD00BFFAC7 /* simplexml.cc */; };
-		71D325A51391CC0300C9BDB2 /* program_params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71D325A31391CC0300C9BDB2 /* program_params.cpp */; };
+		71AEAC561391EFB700BFFAC7 /* program_params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71AEAC541391EFB700BFFAC7 /* program_params.cpp */; };
 		71D325A81391D1B000C9BDB2 /* open_street_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71D325A61391D1B000C9BDB2 /* open_street_map.cpp */; };
 		71D325AB1391D58C00C9BDB2 /* shortest_path_finder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71D325A91391D58C00C9BDB2 /* shortest_path_finder.cpp */; };
 /* End PBXBuildFile section */
@@ -32,8 +32,8 @@
 		717AE965139103210023675F /* Dijkstra.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Dijkstra.1; sourceTree = "<group>"; };
 		71AEAC491391E9FD00BFFAC7 /* simplexml.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simplexml.cc; path = "../../../Downloads/simplexml-1.0/lib/simplexml.cc"; sourceTree = "<group>"; };
 		71AEAC4A1391E9FD00BFFAC7 /* simplexml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simplexml.h; path = "../../../Downloads/simplexml-1.0/lib/simplexml.h"; sourceTree = "<group>"; };
-		71D325A31391CC0300C9BDB2 /* program_params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = program_params.cpp; path = Dijkstra.xcodeproj/program_params.cpp; sourceTree = SOURCE_ROOT; };
-		71D325A41391CC0300C9BDB2 /* program_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = program_params.h; path = Dijkstra.xcodeproj/program_params.h; sourceTree = SOURCE_ROOT; };
+		71AEAC541391EFB700BFFAC7 /* program_params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = program_params.cpp; sourceTree = "<group>"; };
+		71AEAC551391EFB700BFFAC7 /* program_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = program_params.h; sourceTree = "<group>"; };
 		71D325A61391D1B000C9BDB2 /* open_street_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = open_street_map.cpp; sourceTree = "<group>"; };
 		71D325A71391D1B000C9BDB2 /* open_street_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = open_street_map.h; sourceTree = "<group>"; };
 		71D325A91391D58C00C9BDB2 /* shortest_path_finder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shortest_path_finder.cpp; sourceTree = "<group>"; };
@@ -71,8 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				71AEAC481391E9D600BFFAC7 /* SimpleXML */,
-				71D325A41391CC0300C9BDB2 /* program_params.h */,
-				71D325A31391CC0300C9BDB2 /* program_params.cpp */,
+				71AEAC541391EFB700BFFAC7 /* program_params.cpp */,
+				71AEAC551391EFB700BFFAC7 /* program_params.h */,
 				717AE963139103210023675F /* main.cpp */,
 				71D325A61391D1B000C9BDB2 /* open_street_map.cpp */,
 				71D325A71391D1B000C9BDB2 /* open_street_map.h */,
@@ -143,10 +143,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				717AE964139103210023675F /* main.cpp in Sources */,
-				71D325A51391CC0300C9BDB2 /* program_params.cpp in Sources */,
 				71D325A81391D1B000C9BDB2 /* open_street_map.cpp in Sources */,
 				71D325AB1391D58C00C9BDB2 /* shortest_path_finder.cpp in Sources */,
 				71AEAC4B1391E9FD00BFFAC7 /* simplexml.cc in Sources */,
+				71AEAC561391EFB700BFFAC7 /* program_params.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
