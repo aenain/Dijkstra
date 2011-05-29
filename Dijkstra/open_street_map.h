@@ -10,27 +10,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <queue>
+#include <map>
 #include "simplexml.h"
+#include "edge.h"
+#include "node.h"
 //#include "ticpp.h"
 
 using namespace std;
-
-struct Node {
-    string longitude, latitude;
-    // TODO! dodać listę sąsiedztwa (listę krawędzi)
-    Node(const char * longitude, const char * latitude) : longitude(longitude), latitude(latitude) {};
-};
-
-struct Edge {
-    Node * start;
-    Node * finish;
-    int weight;
-    void compute_and_set_weight();
-    Edge(Node * const start, Node * const finish, int weight) : start(start), finish(finish), weight(weight) {};
-};
-
-typedef vector<Node> Nodes;
-typedef vector<Edge> Edges;
 
 class OpenStreetMap {
 public:

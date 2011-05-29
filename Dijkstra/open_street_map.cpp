@@ -24,58 +24,6 @@ Edges OpenStreetMap::edges() {
     return _edges;
 }
 
-/*
-void OpenStreetMap::parse_file(const string & source_file) {
-    TiXmlDocument document(source_file);
-    document.LoadFile();
-    TiXmlHandle docHandle(&document);
-
-    _nodes = fetch_nodes(docHandle);
-    _edges = fetch_edges(docHandle);
-}
-
-Nodes OpenStreetMap::fetch_nodes(const TiXmlHandle docHandle) {
-    Nodes nodes;
-    int nodes_counter = 0;
-    TiXmlHandle osmHandle = docHandle.FirstChild("osm");
-
-    while (TiXmlElement * node = osmHandle.Child("node", nodes_counter).ToElement()) {
-        // zwracają const char *
-        // node.Attribute("id");
-        // node.Attribute("lon");
-        // node.Attribute("lat");
-        nodes_counter++;
-    }
-
-    return nodes;
-}
-
-Edges OpenStreetMap::fetch_edges(const TiXmlHandle docHandle) {
-    Edges edges;
-    int ways_counter = 0;
-    int nodes_counter = 0;
-    TiXmlHandle osmHandle = docHandle.FirstChild("osm");
-
-    while (true) {
-        TiXmlHandle wayHandle = osmHandle.Child("way", ways_counter);
-
-        if (! wayHandle.ToElement())
-            break;
-
-        nodes_counter = 0;
-
-        while (TiXmlElement * node = wayHandle.Child("nd", nodes_counter).ToElement()) {
-            // zwracają const char *
-            // node.Attribute("ref");
-            nodes_counter++;
-        }
-        ways_counter++;
-    }
-
-    return edges;
-}
-*/
-
 void OpenStreetMap::parse_file(const string & source_file) {
     string xml;
     read_file_into_string(source_file, xml);

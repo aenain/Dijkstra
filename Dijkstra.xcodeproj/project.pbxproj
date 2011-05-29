@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		716EF5331392E9DF009E8161 /* edge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 716EF5311392E9DF009E8161 /* edge.cpp */; };
+		716EF5371392EA74009E8161 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 716EF5351392EA74009E8161 /* node.cpp */; };
 		717AE964139103210023675F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 717AE963139103210023675F /* main.cpp */; };
 		71AEAC561391EFB700BFFAC7 /* program_params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71AEAC541391EFB700BFFAC7 /* program_params.cpp */; };
 		71D325A81391D1B000C9BDB2 /* open_street_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71D325A61391D1B000C9BDB2 /* open_street_map.cpp */; };
@@ -27,6 +29,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		716EF5311392E9DF009E8161 /* edge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = edge.cpp; sourceTree = "<group>"; };
+		716EF5321392E9DF009E8161 /* edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = edge.h; sourceTree = "<group>"; };
+		716EF5351392EA74009E8161 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
+		716EF5361392EA74009E8161 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = node.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		716EF5381392F9C1009E8161 /* numbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = numbers.h; sourceTree = "<group>"; };
 		717AE95F139103210023675F /* Dijkstra */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Dijkstra; sourceTree = BUILT_PRODUCTS_DIR; };
 		717AE963139103210023675F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		717AE965139103210023675F /* Dijkstra.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Dijkstra.1; sourceTree = "<group>"; };
@@ -78,6 +85,11 @@
 				71D325A71391D1B000C9BDB2 /* open_street_map.h */,
 				71D325A91391D58C00C9BDB2 /* shortest_path_finder.cpp */,
 				71D325AA1391D58C00C9BDB2 /* shortest_path_finder.h */,
+				716EF5311392E9DF009E8161 /* edge.cpp */,
+				716EF5381392F9C1009E8161 /* numbers.h */,
+				716EF5321392E9DF009E8161 /* edge.h */,
+				716EF5351392EA74009E8161 /* node.cpp */,
+				716EF5361392EA74009E8161 /* node.h */,
 				717AE965139103210023675F /* Dijkstra.1 */,
 			);
 			path = Dijkstra;
@@ -147,6 +159,8 @@
 				71D325AB1391D58C00C9BDB2 /* shortest_path_finder.cpp in Sources */,
 				71AEAC561391EFB700BFFAC7 /* program_params.cpp in Sources */,
 				71EB17C313927DE000F74DE8 /* simplexml.cpp in Sources */,
+				716EF5331392E9DF009E8161 /* edge.cpp in Sources */,
+				716EF5371392EA74009E8161 /* node.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
