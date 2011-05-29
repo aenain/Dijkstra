@@ -23,7 +23,7 @@ public:
     // start_point: { longitude, latitude }
     // finish_point: { longitude, latitude }
     // openstreetmap_source_file
-    ProgramParams(int argc, const char * argv[]) : _start_point(0, 0), _finish_point(0, 0), _open_street_map_source_file() { validate_after_create(argc, argv); };
+    ProgramParams(int argc, const char * argv[]) : _start_point("0.0", "0.0"), _finish_point("0.0", "0.0") { validate_after_create(argc, argv); };
 
 private:
     // name of program, coordinates of start and finish, path to source file with openstreetmap data.

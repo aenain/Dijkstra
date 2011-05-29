@@ -22,7 +22,7 @@ int main (int argc, const char * argv[]) {
         if (open_street_map.include(params.start_point()) && open_street_map.include(params.finish_point())) {
             ShortestPathFinder shortest_path_finder(open_street_map.nodes(), open_street_map.edges());
 
-            shortest_path_finder.between(params.start_point(), params.finish_point());
+            //shortest_path_finder.between(params.start_point(), params.finish_point());
             // TODO! w jakiś sposób trzeba wypisać tą ścieżkę
         }
         else {} // TODO!
