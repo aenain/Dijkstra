@@ -8,17 +8,22 @@
 #include <iostream>
 #include "edge.h"
 
-template <typename T>
-Distance Edge<T>::compute_weight(T const begin, T const end) {
+template <class T>
+Distance Edge<T>::compute_weight(T begin, T end) {
     return sqrt( pow(end.latitude - begin.latitude, 2) + pow(end.longitude - begin.latitude, 2) );
 }
 
-template <typename T>
+template <class T>
 Distance Edge<T>::weight() {
     return _weight;
 }
 
-template <typename T>
-bool Edge<T>::operator<(const Edge<T> & other) {
-    return (weight() > other.weight());
+template <class T>
+bool Edge<T>::operator<(const Edge<T> other) {
+    return weight() > other.weight();
+}
+
+template <class T>
+bool operator<(Edge<T> a, Edge<T> b) {
+    return a.weight() > b.weight();
 }

@@ -25,7 +25,7 @@ void ShortestPathFinder::between(const Node & begin_node, const Node & end_node)
         current->completely_computed = true;
         nodes_left_to_compute_count--;
 
-        
+        if (current == end) break;
         // 1. oznacz obecny węzeł za "w pełni obliczony" (jeden mniej pozostał do liczenia!)
         // 2. jeśli wagi dotarcia do sąsiadów są większe niż waga dotarcia do obecnego węzła + waga danej krawędzi,
         //    to za predecessor_id podstaw id obecnego węzła i ustaw nową wagę węzła.

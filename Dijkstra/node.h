@@ -31,8 +31,8 @@ public:
     bool operator==(const Node & other);
     
 private:
-    
 };
+
 
 typedef priority_queue<Edge<Node> > Edges;
 typedef map<string, Node> Nodes;

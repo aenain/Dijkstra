@@ -9,7 +9,8 @@
 //
 #include <iostream>
 #include <math.h>
-#include "lexical_cast.h"
+#include <cstdlib>
+//#include <boost/lexical_cast.hpp>
 
 typedef double Distance;
 
@@ -17,18 +18,20 @@ namespace Numbers {
     const Distance MAXIMUM = 4294967295;
     const int PRECISION = 7;
     const Distance EPSILON = pow(0.1, PRECISION);
-    
+
     inline bool are_equal(const Distance & a, const Distance & b) {
         Distance difference = a - b;
         return (-Numbers::EPSILON < difference && difference <= 0) || (0 <= difference && difference < Numbers::EPSILON);
     }
 
     inline Distance to_f(const std::string & literal) {
-        return boost::lexical_cast<Distance>(literal);
+        return atof(literal.c_str());
+        //return boost::lexical_cast<Distance>(literal);
     }
 
     inline Distance to_f(const char * literal) {
-        return boost::lexical_cast<Distance>(literal);
+        return atof(literal);
+        //return boost::lexical_cast<Distance>(literal);
     }
 }
 
