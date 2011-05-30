@@ -19,12 +19,14 @@ public:
     Distance latitude, longitude;
     Distance weight;
     priority_queue<Edge<Node> > edges; // dirty hack I know, but works :)
-    Node * predecessor; // pointer to predecessor on the shortest path
+    string predecessor_id; // id of predecessor on the shortest path
     bool completely_computed;
-    
-    Node(const Distance & latitude, const Distance & longitude) : latitude(latitude), longitude(longitude), predecessor(NULL), completely_computed(false) {};
 
-    Node(const string & id, const Distance & latitude, const Distance & longitude) : id(id), latitude(latitude), longitude(longitude), predecessor(NULL), completely_computed(false) {};
+    Node() : latitude(0.0), longitude(0.0), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+    
+    Node(const Distance & latitude, const Distance & longitude) : latitude(latitude), longitude(longitude), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+
+    Node(const string & id, const Distance & latitude, const Distance & longitude) : id(id), latitude(latitude), longitude(longitude), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
 
     bool operator==(const Node & other);
     

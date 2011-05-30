@@ -9,7 +9,7 @@
 #include "edge.h"
 
 template <typename T>
-Distance Edge<T>::compute_weight() {
+Distance Edge<T>::compute_weight(T const begin, T const end) {
     return sqrt( pow(end.latitude - begin.latitude, 2) + pow(end.longitude - begin.latitude, 2) );
 }
 
@@ -20,5 +20,5 @@ Distance Edge<T>::weight() {
 
 template <typename T>
 bool Edge<T>::operator<(const Edge<T> & other) {
-    return weight() > other.weight();
+    return (weight() > other.weight());
 }

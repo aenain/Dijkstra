@@ -9,7 +9,7 @@
 //
 #include <iostream>
 #include <math.h>
-#include "lexical_boost.h"
+#include "lexical_cast.h"
 
 typedef double Distance;
 

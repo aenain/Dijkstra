@@ -64,7 +64,8 @@ Nodes OpenStreetMap::fetch_nodes(simplexml * const xml_tree) {
 
 void OpenStreetMap::fetch_edges_for_nodes(simplexml * const xml_tree) {
     Edges edges;
-    vector<Node *> nodes_in_way;
+    Node current, other;
+    vector<string> connected_nodes_ids;
 
     int ways_counter = 0;
     int nodes_counter = 0;
@@ -76,22 +77,29 @@ void OpenStreetMap::fetch_edges_for_nodes(simplexml * const xml_tree) {
         if (strcmp(way_in_xml -> key(), "way")) continue; // fixes bug in library
 
         nodes_counter = 0;
-        nodes_in_way.clear();
+        connected_nodes_ids.clear();
 
         while (simplexml * node_in_xml = way_in_xml -> child(nodes_counter)) {
             nodes_counter++;
             if (strcmp(node_in_xml -> key(), "nd")) continue; // fixes bug in library
 
             id = node_in_xml -> property("ref");
-            nodes_in_way.push_back( &_nodes[id] );
+            connected_nodes_ids.push_back(id);
         }
 
-        for (int i = 0; i < nodes_in_way.size(); i++) {
-            for (int j = 0; j < nodes_in_way.size(); j++) {
-                if (i != j) {
-                    Edge<Node> edge(*(nodes_in_way[i]), *(nodes_in_way[j]));
-                    nodes_in_way[i]->edges.push(edge);
-                }
+        for (int i = 0; i < connected_nodes_ids.size(); i++) {
+            current = _nodes[connected_nodes_ids[i]];
+
+            if (i > 0) {
+                other = _nodes[connected_nodes_ids[i - 1]];
+                Edge<Node> edge(current, other);
+                current.edges.push(edge);
+            }
+
+            if (i < connected_nodes_ids.size() - 1) {
+                other = _nodes[connected_nodes_ids[i + 1]];
+                Edge<Node> edge(current, other);
+                current.edges.push(edge);
             }
         }
     }

@@ -14,16 +14,16 @@ using namespace std;
 template <typename T>
 class Edge {
 public:
-    T begin, end;
+    string begin_id, end_id;
     Distance weight();
 
-    Edge(T const begin, T const end) : begin(begin), end(end) { _weight(compute_weight()); };
-    Edge(T const begin, T const end, const Distance & weight) : begin(begin), end(end), _weight(weight) {};
+    Edge(T const begin, T const end) : begin_id(begin.id), end_id(end.id), _weight(compute_weight(begin, end)) {};
+    Edge(T const begin, T const end, const Distance & weight) : begin_id(begin.id), end_id(end.id), _weight(weight) {};
     bool operator<(const Edge<T> & other);
-    
+
 private:
     Distance _weight;
-    Distance compute_weight();
+    Distance compute_weight(T const begin, T const end);
 };
 
 

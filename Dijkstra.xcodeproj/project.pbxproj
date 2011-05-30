@@ -34,7 +34,7 @@
 		716EF5351392EA74009E8161 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		716EF5361392EA74009E8161 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = node.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		716EF5381392F9C1009E8161 /* numbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = numbers.h; sourceTree = "<group>"; };
-		716EF5391392FF01009E8161 /* lexical_boost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexical_boost.h; sourceTree = "<group>"; };
+		716EF53B139310F3009E8161 /* lexical_cast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexical_cast.h; sourceTree = "<group>"; };
 		717AE95F139103210023675F /* Dijkstra */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Dijkstra; sourceTree = BUILT_PRODUCTS_DIR; };
 		717AE963139103210023675F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		717AE965139103210023675F /* Dijkstra.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Dijkstra.1; sourceTree = "<group>"; };
@@ -59,14 +59,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		716EF53A1392FF16009E8161 /* LexicalBoost */ = {
-			isa = PBXGroup;
-			children = (
-				716EF5391392FF01009E8161 /* lexical_boost.h */,
-			);
-			name = LexicalBoost;
-			sourceTree = "<group>";
-		};
 		717AE954139103210023675F = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +78,7 @@
 		717AE962139103210023675F /* Dijkstra */ = {
 			isa = PBXGroup;
 			children = (
-				716EF53A1392FF16009E8161 /* LexicalBoost */,
+				716EF53B139310F3009E8161 /* lexical_cast.h */,
 				71AEAC481391E9D600BFFAC7 /* SimpleXML */,
 				71AEAC541391EFB700BFFAC7 /* program_params.cpp */,
 				71AEAC551391EFB700BFFAC7 /* program_params.h */,
