@@ -9,12 +9,12 @@
 //
 #include <iostream>
 #include "open_street_map.h"
+#include "path.h"
 using namespace std;
 
 class ShortestPathFinder {
 public:
-    // type is temporary
-    void between(const Node & begin_node, const Node & end_node);
+    Path between(const Node & begin_node, const Node & end_node);
     ShortestPathFinder(const Nodes & nodes) : _nodes(nodes) {};
 
 private:

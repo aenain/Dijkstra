@@ -30,9 +30,15 @@ private:
     Nodes _nodes;
 
     void read_file_into_string(const string & source_file, string & xml);
+
     Nodes fetch_nodes(simplexml * const xml_tree);
-    void fetch_edges_for_nodes(simplexml * const xml_tree);
-    string fetch_name_of_way(simplexml * const way_in_xml);
+    void fetch_and_build_nodes_edges(simplexml * const xml_tree);
+
+    void build_nodes_edges_in_way(vector<string> node_ids,const Way & way); 
+
+    string fetch_way_name(simplexml * const way_in_xml);
+    string fetch_element_id(simplexml * const way_in_xml, const string & id_property_name = "id");
+    vector<string> fetch_way_node_ids(simplexml * const way_in_xml);
 };
 
 #endif

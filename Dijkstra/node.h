@@ -35,5 +35,9 @@ private:
 
 
 typedef priority_queue<Edge<Node> > Edges;
+typedef vector<Edge<Node> > EdgeList;
+
 typedef map<string, Node> Nodes;
+typedef vector<Node> NodeList;
+
 #endif

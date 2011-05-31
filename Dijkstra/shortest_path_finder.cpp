@@ -9,8 +9,8 @@
 #include "shortest_path_finder.h"
 using namespace std;
 
-void ShortestPathFinder::between(const Node & begin_node, const Node & end_node) {
-    // time for Dijkstra :)
+// Dijkstra's algorithm.
+Path ShortestPathFinder::between(const Node & begin_node, const Node & end_node) {
     // in map _nodes are nodes, but theirs edges contains only ids of connected nodes, not nodes.
     int nodes_left_to_compute_count = static_cast<int>(_nodes.size());
 
@@ -19,10 +19,10 @@ void ShortestPathFinder::between(const Node & begin_node, const Node & end_node)
     Node * current = begin;
     Node * previous = NULL;
 
-    begin->weight = 0;
+    begin -> weight = 0;
 
     while (nodes_left_to_compute_count > 0) {
-        current->completely_computed = true;
+        current -> completely_computed = true;
         nodes_left_to_compute_count--;
 
         if (current == end) break;
@@ -31,4 +31,7 @@ void ShortestPathFinder::between(const Node & begin_node, const Node & end_node)
         //    to za predecessor_id podstaw id obecnego węzła i ustaw nową wagę węzła.
         // 3. idź krawędzią, która ma najmniejszą wagę.
     }
+
+    Path path(_nodes, end_node);
+    return path;
 }

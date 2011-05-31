@@ -15,6 +15,7 @@
 		71D325AB1391D58C00C9BDB2 /* shortest_path_finder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71D325A91391D58C00C9BDB2 /* shortest_path_finder.cpp */; };
 		71EB17C313927DE000F74DE8 /* simplexml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71EB17C213927DE000F74DE8 /* simplexml.cpp */; };
 		71F75B3313950A54005478F5 /* way.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B3113950A54005478F5 /* way.cpp */; };
+		71F75B3713951321005478F5 /* path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B3513951321005478F5 /* path.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,8 @@
 		71EB17C413927E1300F74DE8 /* simplexml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simplexml.h; sourceTree = "<group>"; };
 		71F75B3113950A54005478F5 /* way.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = way.cpp; sourceTree = "<group>"; };
 		71F75B3213950A54005478F5 /* way.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = way.h; sourceTree = "<group>"; };
+		71F75B3513951321005478F5 /* path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = path.cpp; sourceTree = "<group>"; };
+		71F75B3613951321005478F5 /* path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = path.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				71D325A61391D1B000C9BDB2 /* open_street_map.cpp */,
 				71D325A71391D1B000C9BDB2 /* open_street_map.h */,
 				71D325A91391D58C00C9BDB2 /* shortest_path_finder.cpp */,
+				71F75B3513951321005478F5 /* path.cpp */,
+				71F75B3613951321005478F5 /* path.h */,
 				71D325AA1391D58C00C9BDB2 /* shortest_path_finder.h */,
 				716EF5311392E9DF009E8161 /* edge.cpp */,
 				71F75B3113950A54005478F5 /* way.cpp */,
@@ -169,6 +174,7 @@
 				716EF5331392E9DF009E8161 /* edge.cpp in Sources */,
 				716EF5371392EA74009E8161 /* node.cpp in Sources */,
 				71F75B3313950A54005478F5 /* way.cpp in Sources */,
+				71F75B3713951321005478F5 /* path.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
