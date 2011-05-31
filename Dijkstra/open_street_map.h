@@ -32,6 +32,7 @@ private:
     void read_file_into_string(const string & source_file, string & xml);
     Nodes fetch_nodes(simplexml * const xml_tree);
     void fetch_edges_for_nodes(simplexml * const xml_tree);
+    string fetch_name_of_way(simplexml * const way_in_xml);
 };
 
 #endif

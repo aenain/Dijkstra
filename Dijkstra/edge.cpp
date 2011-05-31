@@ -8,4 +8,4 @@
 #include <iostream>
 #include "edge.h"
 
-// Definition of template has to be in header file, because compiler requires whole template to build instances for given class types.
+// Definition of template has to be in a header file, because compiler requires whole template to build instances for given class types.

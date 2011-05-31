@@ -9,16 +9,18 @@
 //
 #include <iostream>
 #include "numbers.h"
+#include "way.h"
 using namespace std;
 
 template <class T>
 class Edge {
 public:
     string begin_id, end_id;
+    Way way;
     Distance weight();
 
-    Edge(T const begin, T const end) : begin_id(begin.id), end_id(end.id), _weight(compute_weight(begin, end)) {};
-    Edge(T const begin, T const end, const Distance & weight) : begin_id(begin.id), end_id(end.id), _weight(weight) {};
+    Edge(T const begin, T const end, const Way & way) : begin_id(begin.id), end_id(end.id), way(way), _weight(compute_weight(begin, end)) {};
+    Edge(T const begin, T const end, const Way & way, const Distance & weight) : begin_id(begin.id), end_id(end.id), way(way), _weight(weight) {};
 
     bool operator<(const Edge<T> other);
 

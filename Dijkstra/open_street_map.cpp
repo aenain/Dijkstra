@@ -75,6 +75,10 @@ void OpenStreetMap::fetch_edges_for_nodes(simplexml * const xml_tree) {
     while (simplexml * way_in_xml = xml_tree -> child(ways_counter)) {
         ways_counter++;
         if (strcmp(way_in_xml -> key(), "way")) continue; // fixes bug in library
+        string way_id = way_in_xml -> property("id");
+        string way_name = fetch_name_of_way(way_in_xml);
+
+        Way way(way_id, way_name);
 
         nodes_counter = 0;
         connected_nodes_ids.clear();
@@ -92,15 +96,30 @@ void OpenStreetMap::fetch_edges_for_nodes(simplexml * const xml_tree) {
 
             if (i > 0) {
                 other = _nodes[connected_nodes_ids[i - 1]];
-                Edge<Node> edge(current, other);
+                Edge<Node> edge(current, other, way);
                 current.edges.push(edge);
             }
 
             if (i < connected_nodes_ids.size() - 1) {
                 other = _nodes[connected_nodes_ids[i + 1]];
-                Edge<Node> edge(current, other);
+                Edge<Node> edge(current, other, way);
                 current.edges.push(edge);
             }
         }
     }
+}
+
+string OpenStreetMap::fetch_name_of_way(simplexml * const way_in_xml) {
+    int tags_counter = 0;
+    string name = "Lack of name...";
+
+    while (simplexml * tag_in_xml = way_in_xml -> child(tags_counter)) {
+        tags_counter++;
+        if (strcmp(tag_in_xml -> key(), "tag")) continue; // fixes bug in library
+        if (strcmp(tag_in_xml -> property("k"), "name")) continue; // I want to fetch only this tag which contains information about name of street
+
+        name = tag_in_xml -> property("v");
+    }
+
+    return name;
 }
