@@ -16,6 +16,7 @@
 		71EB17C313927DE000F74DE8 /* simplexml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71EB17C213927DE000F74DE8 /* simplexml.cpp */; };
 		71F75B3313950A54005478F5 /* way.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B3113950A54005478F5 /* way.cpp */; };
 		71F75B3713951321005478F5 /* path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B3513951321005478F5 /* path.cpp */; };
+		71F75B3A13955410005478F5 /* xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B3813955410005478F5 /* xml.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,7 +37,6 @@
 		716EF5351392EA74009E8161 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		716EF5361392EA74009E8161 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = node.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		716EF5381392F9C1009E8161 /* numbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = numbers.h; sourceTree = "<group>"; };
-		716EF53B139310F3009E8161 /* lexical_cast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexical_cast.h; sourceTree = "<group>"; };
 		717AE95F139103210023675F /* Dijkstra */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Dijkstra; sourceTree = BUILT_PRODUCTS_DIR; };
 		717AE963139103210023675F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		717AE965139103210023675F /* Dijkstra.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Dijkstra.1; sourceTree = "<group>"; };
@@ -52,6 +52,8 @@
 		71F75B3213950A54005478F5 /* way.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = way.h; sourceTree = "<group>"; };
 		71F75B3513951321005478F5 /* path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = path.cpp; sourceTree = "<group>"; };
 		71F75B3613951321005478F5 /* path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = path.h; sourceTree = "<group>"; };
+		71F75B3813955410005478F5 /* xml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xml.cpp; sourceTree = "<group>"; };
+		71F75B3913955410005478F5 /* xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xml.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,17 +86,18 @@
 		717AE962139103210023675F /* Dijkstra */ = {
 			isa = PBXGroup;
 			children = (
-				716EF53B139310F3009E8161 /* lexical_cast.h */,
 				71AEAC481391E9D600BFFAC7 /* SimpleXML */,
 				71AEAC541391EFB700BFFAC7 /* program_params.cpp */,
 				71AEAC551391EFB700BFFAC7 /* program_params.h */,
 				717AE963139103210023675F /* main.cpp */,
 				71D325A61391D1B000C9BDB2 /* open_street_map.cpp */,
 				71D325A71391D1B000C9BDB2 /* open_street_map.h */,
+				71F75B3813955410005478F5 /* xml.cpp */,
+				71F75B3913955410005478F5 /* xml.h */,
 				71D325A91391D58C00C9BDB2 /* shortest_path_finder.cpp */,
+				71D325AA1391D58C00C9BDB2 /* shortest_path_finder.h */,
 				71F75B3513951321005478F5 /* path.cpp */,
 				71F75B3613951321005478F5 /* path.h */,
-				71D325AA1391D58C00C9BDB2 /* shortest_path_finder.h */,
 				716EF5311392E9DF009E8161 /* edge.cpp */,
 				71F75B3113950A54005478F5 /* way.cpp */,
 				71F75B3213950A54005478F5 /* way.h */,
@@ -175,6 +178,7 @@
 				716EF5371392EA74009E8161 /* node.cpp in Sources */,
 				71F75B3313950A54005478F5 /* way.cpp in Sources */,
 				71F75B3713951321005478F5 /* path.cpp in Sources */,
+				71F75B3A13955410005478F5 /* xml.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

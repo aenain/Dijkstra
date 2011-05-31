@@ -23,7 +23,7 @@ Nodes OpenStreetMap::nodes() {
 void OpenStreetMap::parse_file(const string & source_file) {
     string xml;
     read_file_into_string(source_file, xml);
-    simplexml * xml_tree = new simplexml(xml.c_str());
+    XMLNode xml_tree = XML::BuildTree(xml);
 
     cout << "Fetching nodes..." << endl;
     _nodes = fetch_nodes(xml_tree);
@@ -41,76 +41,61 @@ void OpenStreetMap::read_file_into_string(const string & source_file, string & x
     }
 }
 
-Nodes OpenStreetMap::fetch_nodes(simplexml * const xml_tree) {
+Nodes OpenStreetMap::fetch_nodes(const XMLNode xml_tree) {
     Nodes nodes;
-    int nodes_counter = 0;
 
     string id;
     Distance latitude, longitude;
 
-    while (simplexml * node_in_xml = xml_tree -> child(nodes_counter)) {
-        nodes_counter++;
-        if (strcmp(node_in_xml -> key(), "node")) continue; // fixes bug in library
+    XMLNodes xml_nodes = XML::Children(xml_tree, "node");
 
-        id = node_in_xml->property("id");
-        latitude = Numbers::to_f(node_in_xml->property("lat"));
-        longitude = Numbers::to_f(node_in_xml->property("lon"));
+    for (XMLNodes::iterator node = xml_nodes.begin(); node != xml_nodes.end(); node++) {
+        id = XML::Id(*node);
+        latitude = Numbers::to_f(XML::Property(*node, "lat"));
+        longitude = Numbers::to_f(XML::Property(*node, "lon"));
 
-        Node node(id, latitude, longitude);
-        nodes.insert(pair<string, Node>(id, node));
+        Node new_node(id, latitude, longitude);
+        nodes.insert(pair<string, Node>(id, new_node));
     }
 
     return nodes;
 }
 
-void OpenStreetMap::fetch_and_build_nodes_edges(simplexml * const xml_tree) {
+void OpenStreetMap::fetch_and_build_nodes_edges(const XMLNode xml_tree) {
     vector<string> way_node_ids;
-
-    int ways_counter = 0;
     string way_id, way_name;
 
-    while (simplexml * way_in_xml = xml_tree -> child(ways_counter)) {
-        ways_counter++;
-        if (strcmp(way_in_xml -> key(), "way")) continue; // fixes bug in library
-        way_id = fetch_element_id(way_in_xml);
-        way_name = fetch_way_name(way_in_xml);
-        Way way(way_id, way_name);
+    XMLNodes xml_ways = XML::Children(xml_tree, "way");
 
-        way_node_ids = fetch_way_node_ids(way_in_xml);
-        build_nodes_edges_in_way(way_node_ids, way);
+    for (XMLNodes::iterator way = xml_ways.begin(); way != xml_ways.end(); way++) {
+        way_id = XML::Id(*way);
+        way_name = fetch_way_name(*way);
+        Way new_way(way_id, way_name);
+
+        way_node_ids = fetch_way_node_ids(*way);
+        build_nodes_edges_in_way(way_node_ids, new_way);
     }
 }
 
-string OpenStreetMap::fetch_element_id(simplexml * const element_in_xml, const string & id_property_name) { // id_property_name is set by default to "id"
-    string id = element_in_xml -> property(id_property_name.c_str());
-    return id;
-}
-
-string OpenStreetMap::fetch_way_name(simplexml * const way_in_xml) {
-    int tags_counter = 0;
+string OpenStreetMap::fetch_way_name(const XMLNode xml_way) {
     string name = "Lack of name...";
+    XMLNode tag_with_way_name = XML::ChildWithProperty(xml_way, "tag", "k", "name");
 
-    while (simplexml * tag_in_xml = way_in_xml -> child(tags_counter)) {
-        tags_counter++;
-        if (strcmp(tag_in_xml -> key(), "tag")) continue; // fixes bug in library
-        if (strcmp(tag_in_xml -> property("k"), "name")) continue; // I want to fetch only this tag which contains information about name of the street
-
-        name = tag_in_xml -> property("v");
+    if (tag_with_way_name) {
+        name = XML::Property(tag_with_way_name, "v");
     }
 
     return name;
 }
 
-vector<string> OpenStreetMap::fetch_way_node_ids(simplexml * const way_in_xml) {
+vector<string> OpenStreetMap::fetch_way_node_ids(const XMLNode xml_way) {
     vector<string> way_node_ids;
-    int nodes_counter = 0;
     string id;
 
-    while (simplexml * node_in_xml = way_in_xml -> child(nodes_counter)) {
-        nodes_counter++;
-        if (strcmp(node_in_xml -> key(), "nd")) continue; // fixes bug in library
-        
-        id = node_in_xml -> property("ref");
+    XMLNodes xml_way_nodes = XML::Children(xml_way, "nd");
+
+    for (XMLNodes::iterator node = xml_way_nodes.begin(); node != xml_way_nodes.end(); node++) {
+        id = XML::Property(*node, "ref");
         way_node_ids.push_back(id);
     }
 
