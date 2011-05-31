@@ -9,6 +9,7 @@
 //
 #include <iostream>
 #include "numbers.h"
+#include "gps.h"
 #include "way.h"
 using namespace std;
 
@@ -35,7 +36,7 @@ private:
 
 template <class T>
 Distance Edge<T>::compute_length(T begin, T end) {
-    return sqrt( pow(end.latitude - begin.latitude, 2) + pow(end.longitude - begin.latitude, 2) );
+    return GPS::distance(begin.location, end.location);
 }
 
 template <class T>

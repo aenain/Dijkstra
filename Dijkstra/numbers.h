@@ -13,11 +13,13 @@
 //#include <boost/lexical_cast.hpp>
 
 typedef double Distance;
+typedef Distance Coordinate;
 
 namespace Numbers {
     const Distance MAXIMUM = 4294967295;
     const int PRECISION = 7;
     const Distance EPSILON = pow(0.1, PRECISION);
+    const Coordinate PI = 3.141592653589793;
 
     inline bool are_equal(const Distance & a, const Distance & b) {
         Distance difference = a - b;
@@ -32,6 +34,14 @@ namespace Numbers {
     inline Distance to_f(const char * literal) {
         return atof(literal);
         //return boost::lexical_cast<Distance>(literal);
+    }
+
+    inline Coordinate to_rad(const Coordinate &in_degrees) {
+        return in_degrees * 2 * PI / 360;
+    }
+
+    inline Coordinate to_degrees(const Coordinate &in_rad) {
+        return in_rad * 360 / (2 * PI);
     }
 }
 

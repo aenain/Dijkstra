@@ -11,24 +11,29 @@
 #include <queue>
 #include <map>
 #include "edge.h"
+#include "location.h"
 using namespace std;
 
 class Node {
 public:
     string id;
-    Distance latitude, longitude;
+    Location location;
     Distance weight;
     priority_queue<Edge<Node> > edges; // dirty hack I know, but works :)
     string predecessor_id; // id of predecessor on the shortest path
     bool completely_computed;
 
-    Node() : latitude(0.0), longitude(0.0), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
-    
-    Node(const Distance & latitude, const Distance & longitude) : latitude(latitude), longitude(longitude), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node() : id(NULL), location(0.0, 0.0), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    Node(const string & id, const Distance & latitude, const Distance & longitude) : id(id), latitude(latitude), longitude(longitude), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node(const Location &location) : id(NULL), location(location), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    bool operator==(const Node & other);
+    Node(const string &id, const Location &location) : id(id), location(location), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+
+    Node(const Coordinate &latitude, const Coordinate &longitude) : id(NULL), location(latitude, longitude), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+
+    Node(const string &id, const Coordinate &latitude, const Coordinate &longitude) : id(id), location(latitude, longitude), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+
+    bool operator==(const Node &other);
     Edge<Node> find_edge_by_end_id(const string & end_id);
 private:
 };

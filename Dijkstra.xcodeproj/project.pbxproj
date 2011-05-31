@@ -17,6 +17,8 @@
 		71F75B3313950A54005478F5 /* way.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B3113950A54005478F5 /* way.cpp */; };
 		71F75B3713951321005478F5 /* path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B3513951321005478F5 /* path.cpp */; };
 		71F75B3A13955410005478F5 /* xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B3813955410005478F5 /* xml.cpp */; };
+		71F75B4313958340005478F5 /* location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B4113958340005478F5 /* location.cpp */; };
+		71F75B4613958840005478F5 /* gps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71F75B441395883F005478F5 /* gps.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +56,10 @@
 		71F75B3613951321005478F5 /* path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = path.h; sourceTree = "<group>"; };
 		71F75B3813955410005478F5 /* xml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xml.cpp; sourceTree = "<group>"; };
 		71F75B3913955410005478F5 /* xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xml.h; sourceTree = "<group>"; };
+		71F75B4113958340005478F5 /* location.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = location.cpp; sourceTree = "<group>"; };
+		71F75B4213958340005478F5 /* location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = location.h; sourceTree = "<group>"; };
+		71F75B441395883F005478F5 /* gps.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gps.cpp; sourceTree = "<group>"; };
+		71F75B4513958840005478F5 /* gps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gps.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,10 @@
 				716EF5351392EA74009E8161 /* node.cpp */,
 				716EF5361392EA74009E8161 /* node.h */,
 				717AE965139103210023675F /* Dijkstra.1 */,
+				71F75B4113958340005478F5 /* location.cpp */,
+				71F75B4213958340005478F5 /* location.h */,
+				71F75B441395883F005478F5 /* gps.cpp */,
+				71F75B4513958840005478F5 /* gps.h */,
 			);
 			path = Dijkstra;
 			sourceTree = "<group>";
@@ -179,6 +189,8 @@
 				71F75B3313950A54005478F5 /* way.cpp in Sources */,
 				71F75B3713951321005478F5 /* path.cpp in Sources */,
 				71F75B3A13955410005478F5 /* xml.cpp in Sources */,
+				71F75B4313958340005478F5 /* location.cpp in Sources */,
+				71F75B4613958840005478F5 /* gps.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

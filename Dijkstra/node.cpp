@@ -9,10 +9,10 @@
 #include "node.h"
 
 bool Node::operator==(const Node & other) {
-    bool same_coordinates = (longitude == other.longitude && latitude == other.latitude);
+    bool same_location = (location == other.location);
     bool same_id = (id == other.id);
 
-    return same_coordinates || same_id;
+    return same_location || same_id;
 }
 
 Edge<Node> Node::find_edge_by_end_id(const string &end_id) {

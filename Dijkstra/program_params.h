@@ -20,10 +20,10 @@ public:
     Node begin_node();
     Node end_node();
     string open_street_map_source_file();
-    // begin_point: { longitude, latitude }
-    // end_point: { longitude, latitude }
+    // begin_point: { latitude, longitude }
+    // end_point: { latitude, longitude }
     // openstreetmap_source_file
-    ProgramParams(int argc, const char * argv[]) : _begin_node(Numbers::to_f("0.0"), Numbers::to_f("0.0")), _end_node(Numbers::to_f("0.0"), Numbers::to_f("0.0")) { validate_after_create(argc, argv); };
+    ProgramParams(int argc, const char * argv[]) : _begin_node(0, 0), _end_node(0, 0) { validate_after_create(argc, argv); };
 
 private:
     // name of program, coordinates of begin and end, path to source file with openstreetmap data.

@@ -13,7 +13,7 @@
 using namespace std;
 
 int main (int argc, const char * argv[]) {
-    ProgramParams params(argc, argv);
+    ProgramParams params(argc, argv); // najpierw latitude (szerokość), potem longitude (długość)
 
     if (params.valid()) {
         OpenStreetMap open_street_map;

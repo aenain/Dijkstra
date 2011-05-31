@@ -45,7 +45,7 @@ Nodes OpenStreetMap::fetch_nodes(const XMLNode xml_tree) {
     Nodes nodes;
 
     string id;
-    Distance latitude, longitude;
+    Coordinate latitude, longitude;
 
     XMLNodes xml_nodes = XML::Children(xml_tree, "node");
 

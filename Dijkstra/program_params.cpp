@@ -27,11 +27,12 @@ string ProgramParams::open_street_map_source_file() {
 
 void ProgramParams::validate_after_create(int argc, const char * argv[]) {
     if (argc == ProgramParams::VALID_PARAMS_NUMBER) {
-        Node _new_begin_node(Numbers::to_f(argv[1]), Numbers::to_f(argv[2]));
-        Node _new_end_node(Numbers::to_f(argv[3]), Numbers::to_f(argv[4]));
+        Location begin_location(Numbers::to_f(argv[1]), Numbers::to_f(argv[2]));
+        Location end_location(Numbers::to_f(argv[3]), Numbers::to_f(argv[4]));
 
-        _begin_node = _new_begin_node;
-        _end_node = _new_end_node;
+        _begin_node.location = begin_location;
+        _end_node.location = end_location;
+
         _open_street_map_source_file = argv[5];
         _valid = true;
     }
