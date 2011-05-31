@@ -29,7 +29,7 @@ public:
     Node(const string & id, const Distance & latitude, const Distance & longitude) : id(id), latitude(latitude), longitude(longitude), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
 
     bool operator==(const Node & other);
-    
+    Edge<Node> find_edge_by_end_id(const string & end_id);
 private:
 };
 

@@ -14,3 +14,18 @@ bool Node::operator==(const Node & other) {
 
     return same_coordinates || same_id;
 }
+
+Edge<Node> Node::find_edge_by_end_id(const string &end_id) {
+    Edges copied_edges = edges;
+    Edge<Node> edge_to_find(id, end_id);
+
+    while (! copied_edges.empty()) {
+        Edge<Node> edge(copied_edges.top());
+        copied_edges.pop();
+
+        if (edge_to_find == edge)
+            return edge;
+    }
+
+    return edge_to_find;
+}

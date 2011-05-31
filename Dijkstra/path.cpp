@@ -7,9 +7,30 @@
 //
 
 #include "path.h"
+using namespace std;
 
 void Path::print() {
-    // trzeba listę node'ów przeczytać i dla każdego node'a 
+    Distance total_distance = 0;
+
+    if (! _edges.empty()) {
+        Way current_way(_edges.at(0).way);
+        Distance distance_on_current_way = 0;
+
+        for (EdgeList::iterator edge = _edges.begin(); edge != _edges.end(); edge++) {
+            distance_on_current_way += edge -> length();
+
+            if (! (edge -> way == current_way)) {
+                cout << distance_on_current_way << " " << current_way.name() << endl;
+                total_distance += distance_on_current_way;
+                current_way = edge -> way;
+            }
+        }
+    }
+    else {
+        cout << "There is no edges." << endl;
+    }
+
+    cout << "Total distance: " << total_distance << endl;
 }
 
 NodeList Path::nodes() {
@@ -36,7 +57,15 @@ NodeList Path::build_node_list_from_nodes(Nodes & nodes, const Node & end) {
 
 EdgeList Path::build_edge_list() {
     EdgeList edge_list;
-    Node current = _nodes.at(0);
-    // TODO!
+    NodeList::iterator previous = _nodes.begin();
+
+    for (NodeList::iterator current = _nodes.begin() + 1; current != _nodes.end(); current++, previous++) {
+        Edge<Node> edge = previous -> find_edge_by_end_id(current -> id);
+
+        if (edge.valid())
+            edge_list.push_back(edge);
+    }
+
     return edge_list;
 }
+

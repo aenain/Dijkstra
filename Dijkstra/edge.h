@@ -17,36 +17,44 @@ class Edge {
 public:
     string begin_id, end_id;
     Way way;
-    Distance weight();
 
-    Edge(T const begin, T const end, const Way & way) : begin_id(begin.id), end_id(end.id), way(way), _weight(compute_weight(begin, end)) {};
-    Edge(T const begin, T const end, const Way & way, const Distance & weight) : begin_id(begin.id), end_id(end.id), way(way), _weight(weight) {};
+    Distance length();
+    bool valid();
+
+    Edge(const string & begin_id, const string & end_id) : begin_id(begin_id), end_id(end_id), way("0", "NoName"), _length(0), _valid(false) {};
+    Edge(T const begin, T const end, const Way & way) : begin_id(begin.id), end_id(end.id), way(way), _length(compute_length(begin, end)), _valid(true) {};
+    Edge(T const begin, T const end, const Way & way, const Distance & length) : begin_id(begin.id), end_id(end.id), way(way), _length(length), _valid(true) {};
 
     bool operator<(const Edge<T> other);
 
 private:
-    Distance _weight;
-    Distance compute_weight(T const begin, T const end);
+    bool _valid;
+    Distance _length;
+    Distance compute_length(T const begin, T const end);
 };
 
 template <class T>
-Distance Edge<T>::compute_weight(T begin, T end) {
+Distance Edge<T>::compute_length(T begin, T end) {
     return sqrt( pow(end.latitude - begin.latitude, 2) + pow(end.longitude - begin.latitude, 2) );
 }
 
 template <class T>
-Distance Edge<T>::weight() {
-    return _weight;
+Distance Edge<T>::length() {
+    return _length;
 }
 
 template <class T>
-bool Edge<T>::operator<(const Edge<T> other) {
-    return weight() > other.weight();
+bool Edge<T>::valid() {
+    return _valid;
 }
 
 template <class T>
 bool operator<(Edge<T> a, Edge<T> b) {
-    return a.weight() > b.weight();
+    return a.length() > b.length();
 }
 
+template <class T>
+bool operator==(Edge<T> a, Edge<T> b) {
+    return (a.begin_id == b.begin_id && a.end_id == b.end_id);
+}
 #endif
