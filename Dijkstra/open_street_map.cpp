@@ -12,8 +12,13 @@
 #include "open_street_map.h"
 using namespace std;
 
-bool OpenStreetMap::include(const Node & node) {
-    return true; // TODO! ważne, sprawdzenie, czy węzły podane jako argumenty wywołania programu znajdują się w pliku z danymi
+bool OpenStreetMap::include(const Node & node_to_find) {
+    for (NodeMap::iterator node = _nodes.begin(); node != _nodes.end(); node++) {
+        if (node -> second == node_to_find) {
+            return true;
+        }
+    }
+    return false;
 }
 
 NodeMap OpenStreetMap::nodes() {
