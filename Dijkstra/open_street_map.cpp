@@ -16,7 +16,7 @@ bool OpenStreetMap::include(const Node & node) {
     return true; // TODO! ważne, sprawdzenie, czy węzły podane jako argumenty wywołania programu znajdują się w pliku z danymi
 }
 
-Nodes OpenStreetMap::nodes() {
+NodeMap OpenStreetMap::nodes() {
     return _nodes;
 }
 
@@ -41,8 +41,8 @@ void OpenStreetMap::read_file_into_string(const string & source_file, string & x
     }
 }
 
-Nodes OpenStreetMap::fetch_nodes(const XMLNode xml_tree) {
-    Nodes nodes;
+NodeMap OpenStreetMap::fetch_nodes(const XMLNode xml_tree) {
+    NodeMap nodes;
 
     string id;
     Coordinate latitude, longitude;

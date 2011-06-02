@@ -16,16 +16,16 @@ using namespace std;
 class Path {
 public:
     void print();
-    NodeList nodes();
+    Nodes nodes();
     Edges edges();
 
     // nodes are not changed, but I must not use const. Why? no idea, just throws an error.
-    Path(Nodes & nodes, const Node & end) { NodeList _nodes(build_node_list_from_nodes(nodes, end)); Edges _edges(build_edges()); }
+    Path(NodeMap & nodes, const Node & end) { Nodes _nodes(build_node_list_from_nodes(nodes, end)); Edges _edges(build_edges()); }
 
 private:
     Edges _edges;
-    NodeList _nodes;
-    NodeList build_node_list_from_nodes(Nodes & nodes, const Node & end);
+    Nodes _nodes;
+    Nodes build_node_list_from_nodes(NodeMap & nodes, const Node & end);
     Edges build_edges();
 };
 

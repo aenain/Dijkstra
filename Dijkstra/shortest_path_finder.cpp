@@ -40,7 +40,7 @@ Path ShortestPathFinder::between(const Node &begin_node, const Node &end_node) {
 }
 
 void ShortestPathFinder::build_nodes_queue_from_node(const Node *start) {
-    for (Nodes::iterator node = _nodes.begin(); node != _nodes.end(); node++) {
+    for (NodeMap::iterator node = _nodes.begin(); node != _nodes.end(); node++) {
         if (node -> second == *start)
             node -> second.weight = 0;
 

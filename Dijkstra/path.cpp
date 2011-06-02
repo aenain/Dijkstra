@@ -33,7 +33,7 @@ void Path::print() {
     cout << "Total distance: " << total_distance << endl;
 }
 
-NodeList Path::nodes() {
+Nodes Path::nodes() {
     return _nodes;
 }
 
@@ -41,25 +41,25 @@ Edges Path::edges() {
     return _edges;
 }
 
-NodeList Path::build_node_list_from_nodes(Nodes & nodes, const Node & end) {
-    NodeList node_list;
+Nodes Path::build_node_list_from_nodes(NodeMap &nodes, const Node & end) {
+    Nodes node_vector;
     Node current = end;
 
     while (true) {
-        node_list.insert(node_list.begin(), current);
+        node_vector.insert(node_vector.begin(), current);
         if (current.predecessor_id.empty()) break;
 
         current = nodes[current.predecessor_id];
     }
 
-    return node_list;
+    return node_vector;
 }
 
 Edges Path::build_edges() {
     Edges edges;
-    NodeList::iterator previous = _nodes.begin();
+    Nodes::iterator previous = _nodes.begin();
 
-    for (NodeList::iterator current = _nodes.begin() + 1; current != _nodes.end(); current++, previous++) {
+    for (Nodes::iterator current = _nodes.begin() + 1; current != _nodes.end(); current++, previous++) {
         Edge<Node> edge = previous -> find_edge_by_end_id(current -> id);
 
         if (edge.valid())

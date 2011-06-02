@@ -22,16 +22,16 @@ class OpenStreetMap {
 public:
     void parse_file(const string & source_file);
     bool include(const Node & node);
-    Nodes nodes();
+    NodeMap nodes();
     //OpenStreetMap(); // TODO! zaincjalizować _nodes
 
 private:
     string _source_file;
-    Nodes _nodes;
+    NodeMap _nodes;
 
     void read_file_into_string(const string & source_file, string & xml);
 
-    Nodes fetch_nodes(const XMLNode xml_tree);
+    NodeMap fetch_nodes(const XMLNode xml_tree);
     void fetch_and_build_nodes_edges(const XMLNode xml_tree);
 
     void build_nodes_edges_in_way(vector<string> node_ids, const Way & way); 

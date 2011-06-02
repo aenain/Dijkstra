@@ -15,10 +15,10 @@ using namespace std;
 class ShortestPathFinder {
 public:
     Path between(const Node &begin_node, const Node &end_node);
-    ShortestPathFinder(const Nodes &nodes) : _nodes(nodes) {};
+    ShortestPathFinder(const NodeMap &nodes) : _nodes(nodes) {};
 
 private:
-    Nodes _nodes;
+    NodeMap _nodes;
     NodeQueue _nodes_queue;
     void build_nodes_queue_from_node(const Node *start);
     void update_weight_of_nodes_connected_with_node(const Node *node);

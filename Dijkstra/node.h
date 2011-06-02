@@ -45,8 +45,8 @@ bool operator<(const Node &a, const Node &b);
 
 typedef vector<Edge<Node> > Edges;
 
-typedef map<string, Node> Nodes;
-typedef vector<Node> NodeList;
+typedef vector<Node> Nodes;
+typedef map<string, Node> NodeMap;
 typedef priority_queue<Node *> NodeQueue;
 
 #endif
