@@ -19,8 +19,8 @@ public:
     string begin_id, end_id;
     Way way;
 
-    Distance length();
-    bool valid();
+    Distance length() const;
+    bool valid() const;
 
     Edge(const string & begin_id, const string & end_id) : begin_id(begin_id), end_id(end_id), way("0", "NoName"), _length(0), _valid(false) {};
     Edge(T const begin, T const end, const Way & way) : begin_id(begin.id), end_id(end.id), way(way), _length(compute_length(begin, end)), _valid(true) {};
@@ -40,12 +40,12 @@ Distance Edge<T>::compute_length(T begin, T end) {
 }
 
 template <class T>
-Distance Edge<T>::length() {
+Distance Edge<T>::length() const {
     return _length;
 }
 
 template <class T>
-bool Edge<T>::valid() {
+bool Edge<T>::valid() const {
     return _valid;
 }
 

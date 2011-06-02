@@ -16,7 +16,7 @@ void Path::print() {
         Way current_way(_edges.at(0).way);
         Distance distance_on_current_way = 0;
 
-        for (EdgeList::iterator edge = _edges.begin(); edge != _edges.end(); edge++) {
+        for (Edges::iterator edge = _edges.begin(); edge != _edges.end(); edge++) {
             distance_on_current_way += edge -> length();
 
             if (! (edge -> way == current_way)) {
@@ -37,7 +37,7 @@ NodeList Path::nodes() {
     return _nodes;
 }
 
-EdgeList Path::edges() {
+Edges Path::edges() {
     return _edges;
 }
 
@@ -55,17 +55,17 @@ NodeList Path::build_node_list_from_nodes(Nodes & nodes, const Node & end) {
     return node_list;
 }
 
-EdgeList Path::build_edge_list() {
-    EdgeList edge_list;
+Edges Path::build_edges() {
+    Edges edges;
     NodeList::iterator previous = _nodes.begin();
 
     for (NodeList::iterator current = _nodes.begin() + 1; current != _nodes.end(); current++, previous++) {
         Edge<Node> edge = previous -> find_edge_by_end_id(current -> id);
 
         if (edge.valid())
-            edge_list.push_back(edge);
+            edges.push_back(edge);
     }
 
-    return edge_list;
+    return edges;
 }
 

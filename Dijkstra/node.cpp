@@ -16,16 +16,25 @@ bool Node::operator==(const Node & other) {
 }
 
 Edge<Node> Node::find_edge_by_end_id(const string &end_id) {
-    Edges copied_edges = edges;
     Edge<Node> edge_to_find(id, end_id);
 
-    while (! copied_edges.empty()) {
-        Edge<Node> edge(copied_edges.top());
-        copied_edges.pop();
-
-        if (edge_to_find == edge)
-            return edge;
+    for (Edges::iterator edge = edges.begin(); edge != edges.end(); edge++) {
+        if (*edge == edge_to_find) {
+            return *edge;
+        }
     }
 
     return edge_to_find;
+}
+
+bool Node::is_visited() {
+    return _completely_computed;
+}
+
+void Node::mark_as_visited() {
+    _completely_computed = true;
+}
+
+bool operator<(const Node &a, const Node &b) {
+    return (a.weight > b.weight);
 }

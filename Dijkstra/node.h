@@ -19,30 +19,34 @@ public:
     string id;
     Location location;
     Distance weight;
-    priority_queue<Edge<Node> > edges; // dirty hack I know, but works :)
+    vector<Edge<Node> > edges; // dirty hack I know, but works :)
     string predecessor_id; // id of predecessor on the shortest path
-    bool completely_computed;
 
-    Node() : id(NULL), location(0.0, 0.0), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node() : id(NULL), location(0.0, 0.0), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    Node(const Location &location) : id(NULL), location(location), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node(const Location &location) : id(NULL), location(location), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    Node(const string &id, const Location &location) : id(id), location(location), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node(const string &id, const Location &location) : id(id), location(location), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    Node(const Coordinate &latitude, const Coordinate &longitude) : id(NULL), location(latitude, longitude), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node(const Coordinate &latitude, const Coordinate &longitude) : id(NULL), location(latitude, longitude), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    Node(const string &id, const Coordinate &latitude, const Coordinate &longitude) : id(id), location(latitude, longitude), predecessor_id(NULL), completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node(const string &id, const Coordinate &latitude, const Coordinate &longitude) : id(id), location(latitude, longitude), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
     bool operator==(const Node &other);
     Edge<Node> find_edge_by_end_id(const string & end_id);
+    bool is_visited();
+    void mark_as_visited();
+
 private:
+    bool _completely_computed;
 };
 
+bool operator<(const Node &a, const Node &b);
 
-typedef priority_queue<Edge<Node> > Edges;
-typedef vector<Edge<Node> > EdgeList;
+typedef vector<Edge<Node> > Edges;
 
 typedef map<string, Node> Nodes;
 typedef vector<Node> NodeList;
+typedef priority_queue<Node *> NodeQueue;
 
 #endif

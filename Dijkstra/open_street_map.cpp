@@ -111,13 +111,13 @@ void OpenStreetMap::build_nodes_edges_in_way(vector<string> way_node_ids, const 
         if (i > 0) {
             other = _nodes[way_node_ids[i - 1]];
             Edge<Node> edge(current, other, way);
-            current.edges.push(edge);
+            current.edges.push_back(edge);
         }
         
         if (i < way_node_ids.size() - 1) {
             other = _nodes[way_node_ids[i + 1]];
             Edge<Node> edge(current, other, way);
-            current.edges.push(edge);
+            current.edges.push_back(edge);
         }
     }
 }

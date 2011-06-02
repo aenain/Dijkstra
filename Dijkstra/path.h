@@ -17,16 +17,16 @@ class Path {
 public:
     void print();
     NodeList nodes();
-    EdgeList edges();
+    Edges edges();
 
     // nodes are not changed, but I must not use const. Why? no idea, just throws an error.
-    Path(Nodes & nodes, const Node & end) { NodeList _nodes(build_node_list_from_nodes(nodes, end)); EdgeList _edges(build_edge_list()); }
+    Path(Nodes & nodes, const Node & end) { NodeList _nodes(build_node_list_from_nodes(nodes, end)); Edges _edges(build_edges()); }
 
 private:
-    EdgeList _edges;
+    Edges _edges;
     NodeList _nodes;
     NodeList build_node_list_from_nodes(Nodes & nodes, const Node & end);
-    EdgeList build_edge_list();
+    Edges build_edges();
 };
 
 #endif
