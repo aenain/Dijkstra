@@ -12,10 +12,11 @@
 #include "shortest_path_finder.h"
 using namespace std;
 
-//  ~/Desktop/Dijkstra.debug 50.0681312 19.8282072 50.0679427 19.8280681 ~/Downloads/olszanica.osm
+//  ~/Desktop/Dijkstra.debug 50.0661049 19.8271709 50.0696368 19.8287717 ~/Downloads/olszanica.osm
+// ~/Desktop/Dijkstra.debug 1088843921 390856288 ~/Downloads/olszanica.osm
 
 int main (int argc, const char * argv[]) {
-    ProgramParams params(argc, argv); // najpierw latitude (szerokość), potem longitude (długość)
+    ProgramParams params(argc, argv); // latitude, longitude or only node_id
 
     if (params.valid()) {
         OpenStreetMap open_street_map;
