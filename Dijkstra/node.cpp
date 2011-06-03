@@ -27,7 +27,11 @@ Edge<Node> Node::find_edge_by_end_id(const string &end_id) {
     return edge_to_find;
 }
 
-bool Node::is_visited() {
+bool Node::valid() const {
+    return !id.empty();
+}
+
+bool Node::visited() const {
     return _completely_computed;
 }
 

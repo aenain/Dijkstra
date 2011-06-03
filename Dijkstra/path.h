@@ -25,8 +25,10 @@ public:
 private:
     Edges _edges;
     Nodes _nodes;
-    void build_node_list_from_nodes(NodeMap &nodes, const Node &end);
+    void build_node_list_from_nodes(NodeMap &nodes, Node &end);
     void build_edges();
+    void print_way_with_distance(const Way &way, const Distance &distance);
+    string distance_for_human(Distance distance);
 };
 
 #endif

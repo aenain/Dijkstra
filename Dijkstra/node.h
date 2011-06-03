@@ -34,7 +34,8 @@ public:
 
     bool operator==(const Node &other);
     Edge<Node> find_edge_by_end_id(const string & end_id);
-    bool is_visited();
+    bool valid() const;
+    bool visited() const;
     void mark_as_visited();
 
 private:
@@ -47,6 +48,6 @@ typedef vector<Edge<Node> > Edges;
 
 typedef vector<Node> Nodes;
 typedef map<string, Node> NodeMap;
-typedef priority_queue<Node *> NodeQueue;
+typedef priority_queue<Node> NodeQueue;
 
 #endif

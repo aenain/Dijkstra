@@ -12,21 +12,30 @@
 #include "open_street_map.h"
 using namespace std;
 
+bool OpenStreetMap::include(const Node &node_to_find) {
+    // checking if node is in map range doesn't make sense, because it's not restricted, eg. there are nodes in *.osm which aren't in range declared in this file.
+    return ! find_node_id(node_to_find).empty();
+}
+
+
+bool OpenStreetMap::in_map_range(const Node &node) {
+    bool latitude_in_range = Numbers::in_range(node.location.latitude, _minimum.latitude, _maximum.latitude);
+    bool longitude_in_range = Numbers::in_range(node.location.longitude, _minimum.longitude, _maximum.longitude);
+    
+    return latitude_in_range && longitude_in_range;
+}
+
 string OpenStreetMap::find_node_id(const Node &node_to_find) {
     string id;
-
+    
     for (NodeMap::iterator node = _nodes.begin(); node != _nodes.end(); node++) {
         if (node -> second == node_to_find) {
             id = node -> second.id;
             break;
         }
     }
-
+    
     return id;
-}
-
-bool OpenStreetMap::include(const Node &node_to_find) {
-    return ! find_node_id(node_to_find).empty();
 }
 
 void OpenStreetMap::fill_up_information_about_node(Node &node_to_update) {
@@ -45,6 +54,8 @@ void OpenStreetMap::parse_file(const string & source_file) {
     string xml;
     read_file_into_string(source_file, xml);
     XMLNode xml_tree = XML::BuildTree(xml);
+
+    fetch_and_set_map_range(xml_tree);
 
     cout << "Fetching nodes..." << endl;
     _nodes = fetch_nodes(xml_tree);
@@ -141,4 +152,14 @@ void OpenStreetMap::build_nodes_edges_in_way(vector<string> way_node_ids, const 
             current -> edges.push_back(edge);
         }
     }
+}
+
+void OpenStreetMap::fetch_and_set_map_range(const XMLNode xml_tree) {
+    XMLNode bounds = XML::Child(xml_tree, "bounds");
+
+    _minimum.latitude = Numbers::to_f(XML::Property(bounds, "minlat"));
+    _minimum.longitude = Numbers::to_f(XML::Property(bounds, "minlon"));
+
+    _maximum.latitude = Numbers::to_f(XML::Property(bounds, "maxlat"));
+    _maximum.longitude = Numbers::to_f(XML::Property(bounds, "maxlon"));
 }

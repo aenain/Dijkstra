@@ -14,8 +14,8 @@ using namespace std;
 
 class Way {
 public:
-    string id();
-    string name();
+    string id() const;
+    string name() const;
     Way(const string & id, const string & name) : _id(id), _name(name) {};
 
 private:

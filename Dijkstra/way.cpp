@@ -10,11 +10,11 @@
 #include <string>
 using namespace std;
 
-string Way::id() {
+string Way::id() const {
     return _id;
 }
 
-string Way::name() {
+string Way::name() const {
     return _name;
 }
 

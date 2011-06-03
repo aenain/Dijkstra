@@ -14,7 +14,7 @@
 class Location {
 public:
     Coordinate latitude, longitude;
-    Location(const Coordinate & latitude, const Coordinate & longitude) : latitude(latitude), longitude(longitude) {};
+    Location(const Coordinate &latitude, const Coordinate &longitude) : latitude(latitude), longitude(longitude) {};
 };
 
 bool operator==(const Location &a, const Location &b);

@@ -17,9 +17,10 @@ namespace Earth {
 
 class GPS {
 public:
-    static Distance distance(const Location & begin, const Location & end);
+    static Distance distance(const Location &begin, const Location &end);
 
 private:
+    // latitudes in rad
     static Distance average_radius_for_latitudes(const Coordinate &begin_latitude, const Coordinate &end_latitude);
 };
 

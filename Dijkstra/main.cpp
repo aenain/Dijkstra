@@ -29,10 +29,7 @@ int main (int argc, const char * argv[]) {
             open_street_map.fill_up_information_about_node(end);
 
             ShortestPathFinder shortest_path_finder(open_street_map.nodes());
-            cout << "prepare for dijkstra" << endl;
-            Path path = shortest_path_finder.between(begin, end);
-            cout << "shortest path found!" << endl;
-            path.print();
+            shortest_path_finder.between(begin, end).print();
         }
         else {} // TODO!
     }
