@@ -60,7 +60,7 @@ void Path::print() {
         print_way_with_distance(current_way, distance_on_current_way);
     }
     else {
-        cout << "There is no edges." << endl;
+        cout << "There is no edges between given nodes." << endl;
     }
 
     cout << "Total distance: " << distance_for_human(total_distance) << endl;
