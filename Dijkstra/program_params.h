@@ -21,6 +21,8 @@ public:
     Node begin_node();
     Node end_node();
     string open_street_map_source_file();
+    void wrong_arguments();
+    void wrong_nodes();
     // begin_point: { latitude, longitude } || id
     // end_point: { latitude, longitude } || id
     // openstreetmap_source_file

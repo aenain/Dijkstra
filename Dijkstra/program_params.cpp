@@ -47,3 +47,13 @@ void ProgramParams::validate_after_create(int argc, const char * argv[]) {
         _valid = false;
     }
 }
+
+void ProgramParams::wrong_nodes() {
+    cout << "At least one of given nodes doesn't exist in OSM file." << endl;
+}
+
+void ProgramParams::wrong_arguments() {
+    cout << "Examples of usage:\n"
+    << "~/Desktop/Dijkstra.debug 50.0661049 19.8271709 50.0696368 19.8287717 ~/Downloads/olszanica.osm\n"
+    << "~/Desktop/Dijkstra.debug 1088843921 390856288 ~/Downloads/olszanica.osm" << endl;
+}

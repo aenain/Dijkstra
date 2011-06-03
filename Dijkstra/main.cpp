@@ -32,8 +32,12 @@ int main (int argc, const char * argv[]) {
             ShortestPathFinder shortest_path_finder(open_street_map.nodes());
             shortest_path_finder.between(begin, end).print();
         }
-        else {} // TODO!
+        else {
+            params.wrong_nodes();
+        }
     }
-    else {} // TODO!
+    else {
+        params.wrong_arguments();
+    }
     return 0;
 }
