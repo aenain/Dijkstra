@@ -21,6 +21,7 @@ using namespace std;
 class OpenStreetMap {
 public:
     void parse_file(const string & source_file);
+    void fill_up_information_about_node(Node &node);
     bool include(const Node & node);
     NodeMap nodes();
     //OpenStreetMap(); // TODO! zaincjalizować _nodes
@@ -34,10 +35,12 @@ private:
     NodeMap fetch_nodes(const XMLNode xml_tree);
     void fetch_and_build_nodes_edges(const XMLNode xml_tree);
 
-    void build_nodes_edges_in_way(vector<string> node_ids, const Way & way); 
+    void build_nodes_edges_in_way(vector<string> node_ids, const Way & way);
 
     string fetch_way_name(const XMLNode xml_way);
     vector<string> fetch_way_node_ids(const XMLNode xml_way);
+
+    string find_node_id(const Node &node);
 };
 
 #endif

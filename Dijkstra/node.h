@@ -22,15 +22,15 @@ public:
     vector<Edge<Node> > edges; // dirty hack I know, but works :)
     string predecessor_id; // id of predecessor on the shortest path
 
-    Node() : id(NULL), location(0.0, 0.0), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node() : id(""), location(0.0, 0.0), predecessor_id(""), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    Node(const Location &location) : id(NULL), location(location), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node(const Location &location) : id(""), location(location), predecessor_id(""), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    Node(const string &id, const Location &location) : id(id), location(location), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node(const string &id, const Location &location) : id(id), location(location), predecessor_id(""), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    Node(const Coordinate &latitude, const Coordinate &longitude) : id(NULL), location(latitude, longitude), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node(const Coordinate &latitude, const Coordinate &longitude) : id(""), location(latitude, longitude), predecessor_id(""), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
-    Node(const string &id, const Coordinate &latitude, const Coordinate &longitude) : id(id), location(latitude, longitude), predecessor_id(NULL), _completely_computed(false), weight(Numbers::MAXIMUM) {};
+    Node(const string &id, const Coordinate &latitude, const Coordinate &longitude) : id(id), location(latitude, longitude), predecessor_id(""), _completely_computed(false), weight(Numbers::MAXIMUM) {};
 
     bool operator==(const Node &other);
     Edge<Node> find_edge_by_end_id(const string & end_id);

@@ -23,7 +23,7 @@ public:
     // begin_point: { latitude, longitude }
     // end_point: { latitude, longitude }
     // openstreetmap_source_file
-    ProgramParams(int argc, const char * argv[]) : _begin_node(0, 0), _end_node(0, 0) { validate_after_create(argc, argv); };
+    ProgramParams(int argc, const char * argv[]) : _begin_node(0, 0), _end_node(0, 0), _valid(false), _open_street_map_source_file("") { validate_after_create(argc, argv); };
 
 private:
     // name of program, coordinates of begin and end, path to source file with openstreetmap data.

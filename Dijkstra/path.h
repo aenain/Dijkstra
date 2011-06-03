@@ -20,13 +20,13 @@ public:
     Edges edges();
 
     // nodes are not changed, but I must not use const. Why? no idea, just throws an error.
-    Path(NodeMap & nodes, const Node & end) { Nodes _nodes(build_node_list_from_nodes(nodes, end)); Edges _edges(build_edges()); }
+    Path(NodeMap &nodes, Node &end);
 
 private:
     Edges _edges;
     Nodes _nodes;
-    Nodes build_node_list_from_nodes(NodeMap & nodes, const Node & end);
-    Edges build_edges();
+    void build_node_list_from_nodes(NodeMap &nodes, const Node &end);
+    void build_edges();
 };
 
 #endif

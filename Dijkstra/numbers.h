@@ -16,7 +16,8 @@ typedef double Distance;
 typedef Distance Coordinate;
 
 namespace Numbers {
-    const Distance MAXIMUM = 4294967295;
+    //const Distance MAXIMUM = 4294967295;
+    const Distance MAXIMUM = 2000000000;
     const int PRECISION = 7;
     const Distance EPSILON = pow(0.1, PRECISION);
     const Coordinate PI = 3.141592653589793;

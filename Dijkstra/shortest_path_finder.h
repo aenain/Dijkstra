@@ -20,9 +20,9 @@ public:
 private:
     NodeMap _nodes;
     NodeQueue _nodes_queue;
-    void build_nodes_queue_from_node(const Node *start);
+    void build_nodes_queue_from_node(Node *start);
     void update_weight_of_nodes_connected_with_node(const Node *node);
-    void set_previous_as_predecessor_of_node(Node *node, const Node *predecessor);
+    void set_predecessor_of_node(Node *node, const Node *predecessor);
 };
 
 #endif

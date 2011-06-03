@@ -9,6 +9,11 @@
 #include "path.h"
 using namespace std;
 
+Path::Path(NodeMap &nodes, Node &end) {
+    build_node_list_from_nodes(nodes, end);
+    build_edges();
+}
+
 void Path::print() {
     Distance total_distance = 0;
 
@@ -33,6 +38,30 @@ void Path::print() {
     cout << "Total distance: " << total_distance << endl;
 }
 
+void Path::build_node_list_from_nodes(NodeMap &nodes, const Node & end) {
+    Node current = end;
+
+    while (true) {
+        _nodes.insert(_nodes.begin(), current);
+        if (current.predecessor_id.empty()) break;
+
+        current = nodes[current.predecessor_id];
+    }
+}
+
+void Path::build_edges() {
+    Nodes::iterator previous = _nodes.begin();
+    cout << "ilość node'ów: " << _nodes.size() << endl;
+
+    for (Nodes::iterator current = _nodes.begin() + 1; current != _nodes.end(); current++, previous++) {
+        Edge<Node> edge = previous -> find_edge_by_end_id(current -> id);
+
+        if (edge.valid())
+            _edges.push_back(edge);
+    }
+}
+
+
 Nodes Path::nodes() {
     return _nodes;
 }
@@ -40,32 +69,3 @@ Nodes Path::nodes() {
 Edges Path::edges() {
     return _edges;
 }
-
-Nodes Path::build_node_list_from_nodes(NodeMap &nodes, const Node & end) {
-    Nodes node_vector;
-    Node current = end;
-
-    while (true) {
-        node_vector.insert(node_vector.begin(), current);
-        if (current.predecessor_id.empty()) break;
-
-        current = nodes[current.predecessor_id];
-    }
-
-    return node_vector;
-}
-
-Edges Path::build_edges() {
-    Edges edges;
-    Nodes::iterator previous = _nodes.begin();
-
-    for (Nodes::iterator current = _nodes.begin() + 1; current != _nodes.end(); current++, previous++) {
-        Edge<Node> edge = previous -> find_edge_by_end_id(current -> id);
-
-        if (edge.valid())
-            edges.push_back(edge);
-    }
-
-    return edges;
-}
-

@@ -12,13 +12,29 @@
 #include "open_street_map.h"
 using namespace std;
 
-bool OpenStreetMap::include(const Node & node_to_find) {
+string OpenStreetMap::find_node_id(const Node &node_to_find) {
+    string id;
+
     for (NodeMap::iterator node = _nodes.begin(); node != _nodes.end(); node++) {
         if (node -> second == node_to_find) {
-            return true;
+            id = node -> second.id;
+            break;
         }
     }
-    return false;
+
+    return id;
+}
+
+bool OpenStreetMap::include(const Node &node_to_find) {
+    return ! find_node_id(node_to_find).empty();
+}
+
+void OpenStreetMap::fill_up_information_about_node(Node &node_to_update) {
+    string node_id = find_node_id(node_to_update);
+
+    if (! node_id.empty()) {
+        node_to_update = _nodes[node_id];
+    }
 }
 
 NodeMap OpenStreetMap::nodes() {
@@ -108,21 +124,21 @@ vector<string> OpenStreetMap::fetch_way_node_ids(const XMLNode xml_way) {
 }
 
 void OpenStreetMap::build_nodes_edges_in_way(vector<string> way_node_ids, const Way & way) {
-    Node current, other;
+    Node *current, *other;
 
     for (int i = 0; i < way_node_ids.size(); i++) {
-        current = _nodes[way_node_ids[i]];
+        current = &_nodes[way_node_ids[i]];
         
         if (i > 0) {
-            other = _nodes[way_node_ids[i - 1]];
-            Edge<Node> edge(current, other, way);
-            current.edges.push_back(edge);
+            other = &_nodes[way_node_ids[i - 1]];
+            Edge<Node> edge(*current, *other, way);
+            current -> edges.push_back(edge);
         }
         
         if (i < way_node_ids.size() - 1) {
-            other = _nodes[way_node_ids[i + 1]];
-            Edge<Node> edge(current, other, way);
-            current.edges.push_back(edge);
+            other = &_nodes[way_node_ids[i + 1]];
+            Edge<Node> edge(*current, *other, way);
+            current -> edges.push_back(edge);
         }
     }
 }

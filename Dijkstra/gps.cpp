@@ -17,7 +17,7 @@ Distance GPS::distance(const Location & begin, const Location & end) {
 
     distance = 2 * averaged_radius * asin(sqrt(pow(sin((begin.latitude - end.latitude)/2), 2) + cos(begin.latitude) * cos(end.latitude) * pow(sin((begin.longitude - end.longitude)/2), 2)));
 
-    return distance;
+    return distance; // in meters
 }
 
 // http://fitt.tychy.pl/gps/PoradyJanusza.htm#Porada_17_Obliczanie_odleg_o_ci_

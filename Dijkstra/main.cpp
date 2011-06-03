@@ -12,6 +12,8 @@
 #include "shortest_path_finder.h"
 using namespace std;
 
+//  ~/Desktop/Dijkstra.debug 50.0681312 19.8282072 50.0679427 19.8280681 ~/Downloads/olszanica.osm
+
 int main (int argc, const char * argv[]) {
     ProgramParams params(argc, argv); // najpierw latitude (szerokość), potem longitude (długość)
 
@@ -20,9 +22,16 @@ int main (int argc, const char * argv[]) {
         open_street_map.parse_file(params.open_street_map_source_file());
 
         if (open_street_map.include(params.begin_node()) && open_street_map.include(params.end_node())) {
-            ShortestPathFinder shortest_path_finder(open_street_map.nodes());
+            Node begin = params.begin_node();
+            Node end = params.end_node();
 
-            Path path = shortest_path_finder.between(params.begin_node(), params.end_node());
+            open_street_map.fill_up_information_about_node(begin);
+            open_street_map.fill_up_information_about_node(end);
+
+            ShortestPathFinder shortest_path_finder(open_street_map.nodes());
+            cout << "prepare for dijkstra" << endl;
+            Path path = shortest_path_finder.between(begin, end);
+            cout << "shortest path found!" << endl;
             path.print();
         }
         else {} // TODO!
