@@ -34,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7111431F1398ECB9004BE923 /* xml_repair.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = xml_repair.rb; sourceTree = "<group>"; };
 		716EF5311392E9DF009E8161 /* edge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = edge.cpp; sourceTree = "<group>"; };
 		716EF5321392E9DF009E8161 /* edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = edge.h; sourceTree = "<group>"; };
 		716EF5351392EA74009E8161 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 			children = (
 				71AEAC481391E9D600BFFAC7 /* SimpleXML */,
 				71AEAC541391EFB700BFFAC7 /* program_params.cpp */,
+				7111431F1398ECB9004BE923 /* xml_repair.rb */,
 				71AEAC551391EFB700BFFAC7 /* program_params.h */,
 				717AE963139103210023675F /* main.cpp */,
 				71D325A61391D1B000C9BDB2 /* open_street_map.cpp */,
