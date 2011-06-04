@@ -41,6 +41,7 @@ private:
     void fetch_and_set_map_range(const XMLNode xml_tree);
     bool in_map_range(const Node &node);
 
+    bool check_if_way_is_oneway(const XMLNode xml_way);
     string fetch_way_name(const XMLNode xml_way);
     vector<string> fetch_way_node_ids(const XMLNode xml_way);
 

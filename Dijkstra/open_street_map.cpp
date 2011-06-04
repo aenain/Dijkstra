@@ -96,13 +96,15 @@ NodeMap OpenStreetMap::fetch_nodes(const XMLNode xml_tree) {
 void OpenStreetMap::fetch_and_build_nodes_edges(const XMLNode xml_tree) {
     vector<string> way_node_ids;
     string way_id, way_name;
+    bool is_oneway;
 
     XMLNodes xml_ways = XML::Children(xml_tree, "way");
 
     for (XMLNodes::iterator way = xml_ways.begin(); way != xml_ways.end(); way++) {
         way_id = XML::Id(*way);
         way_name = fetch_way_name(*way);
-        Way new_way(way_id, way_name);
+        is_oneway = check_if_way_is_oneway(*way);
+        Way new_way(way_id, way_name, is_oneway);
 
         way_node_ids = fetch_way_node_ids(*way);
         build_nodes_edges_in_way(way_node_ids, new_way);
@@ -118,6 +120,16 @@ string OpenStreetMap::fetch_way_name(const XMLNode xml_way) {
     }
 
     return name;
+}
+
+bool OpenStreetMap::check_if_way_is_oneway(const XMLNode xml_way) {
+    XMLNode tag_with_oneway = XML::ChildWithProperty(xml_way, "tag", "k", "oneway");
+
+    if (tag_with_oneway) {
+        return (XML::Property(tag_with_oneway, "v") == "yes");
+    }
+
+    return false;
 }
 
 vector<string> OpenStreetMap::fetch_way_node_ids(const XMLNode xml_way) {
@@ -140,7 +152,7 @@ void OpenStreetMap::build_nodes_edges_in_way(vector<string> way_node_ids, const 
     for (int i = 0; i < way_node_ids.size(); i++) {
         current = &_nodes[way_node_ids[i]];
         
-        if (i > 0) {
+        if (i > 0 && ! way.oneway()) {
             other = &_nodes[way_node_ids[i - 1]];
             Edge<Node> edge(*current, *other, way);
             current -> edges.push_back(edge);

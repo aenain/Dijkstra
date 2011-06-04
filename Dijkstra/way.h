@@ -16,10 +16,12 @@ class Way {
 public:
     string id() const;
     string name() const;
-    Way(const string & id, const string & name) : _id(id), _name(name) {};
+    bool oneway() const;
+    Way(const string & id, const string & name, bool oneway = false) : _id(id), _name(name), _oneway(oneway) {};
 
 private:
     string _id, _name;
+    bool _oneway;
 };
 
 bool operator==(Way & a, Way & b);

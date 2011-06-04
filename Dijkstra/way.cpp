@@ -18,6 +18,10 @@ string Way::name() const {
     return _name;
 }
 
+bool Way::oneway() const {
+    return _oneway;
+}
+
 bool operator==(Way & a, Way & b) {
     return a.id() == b.id();
 }

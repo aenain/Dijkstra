@@ -95,7 +95,6 @@
 			children = (
 				71AEAC481391E9D600BFFAC7 /* SimpleXML */,
 				71AEAC541391EFB700BFFAC7 /* program_params.cpp */,
-				7111431F1398ECB9004BE923 /* xml_repair.rb */,
 				71AEAC551391EFB700BFFAC7 /* program_params.h */,
 				717AE963139103210023675F /* main.cpp */,
 				71D325A61391D1B000C9BDB2 /* open_street_map.cpp */,
@@ -113,11 +112,12 @@
 				716EF5381392F9C1009E8161 /* numbers.h */,
 				716EF5351392EA74009E8161 /* node.cpp */,
 				716EF5361392EA74009E8161 /* node.h */,
-				717AE965139103210023675F /* Dijkstra.1 */,
 				71F75B4113958340005478F5 /* location.cpp */,
 				71F75B4213958340005478F5 /* location.h */,
 				71F75B441395883F005478F5 /* gps.cpp */,
 				71F75B4513958840005478F5 /* gps.h */,
+				7111431F1398ECB9004BE923 /* xml_repair.rb */,
+				717AE965139103210023675F /* Dijkstra.1 */,
 			);
 			path = Dijkstra;
 			sourceTree = "<group>";
@@ -236,6 +236,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_LOCATION = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -248,6 +249,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
