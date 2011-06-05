@@ -12,10 +12,10 @@
 #include "shortest_path_finder.h"
 using namespace std;
 
-//  ~/Desktop/Dijkstra.debug 50.0661049 19.8271709 50.0696368 19.8287717 ~/Downloads/olszanica.osm
-// ~/Desktop/Dijkstra.debug 1088843921 390856288 ~/Downloads/olszanica.osm
+//  ./Dijkstra.debug 50.0661049 19.8271709 50.0696368 19.8287717 ~/Downloads/olszanica.osm
+// ./Dijkstra.debug 1088843921 390856288 ~/Downloads/olszanica.osm
 
-int main (int argc, const char * argv[]) {
+int main (int argc, const char *argv[]) {
     ProgramParams params(argc, argv); // latitude, longitude or only node_id
 
     if (params.valid()) {
@@ -30,7 +30,8 @@ int main (int argc, const char * argv[]) {
             open_street_map.fill_up_information_about_node(end);
 
             ShortestPathFinder shortest_path_finder(open_street_map.nodes());
-            shortest_path_finder.between(begin, end).print();
+            //shortest_path_finder.between(begin, end).print();
+            shortest_path_finder.between(begin, end).write_to_file("/Users/arturhebda/Desktop/path.xml");
         }
         else {
             params.wrong_nodes();

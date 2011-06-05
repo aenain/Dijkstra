@@ -5,13 +5,18 @@
 //  Created by Artur Hebda on 31/05/2011.
 //  Copyright 2011 AdTaily. All rights reserved.
 //
-
+#include <fstream>
 #include "path.h"
 using namespace std;
 
 Path::Path(NodeMap &nodes, Node &end) {
+    copy_node_map(nodes);
     build_node_list_from_nodes(nodes, end);
     build_edges();
+}
+
+void Path::copy_node_map(NodeMap &nodes) {
+    _nodes_by_id = nodes;
 }
 
 void Path::build_node_list_from_nodes(NodeMap &nodes, Node &end) {
@@ -72,14 +77,73 @@ void Path::print_way_with_distance(const Way &way, const Distance &distance) {
 
 string Path::distance_for_human(Distance distance) {
     string unit = "m";
-
+    
     if (distance >= 1000.0) {
         distance /= 1000.0; // in kilometers
         unit = "km";
         return Numbers::to_s(distance) + unit;
     }
-
+    
     return Numbers::to_s(distance, 0) + unit;
+}
+
+void Path::write_to_file(const string &filepath) {
+    ofstream file;
+    file.open(filepath.c_str());
+
+    if (file.is_open()) {
+        file << to_xml();
+        file.close();
+    }
+}
+
+string & Path::xml_ways() {
+    string *xml_ways = new string;
+    string xml_nodes;
+
+    if (! _edges.empty()) {
+        Edge<Node> first_edge = _edges.at(0);
+
+        Way current_way(first_edge.way);
+        Distance distance_on_current_way = 0;
+
+        Node node = find_node(first_edge.begin_id);
+        xml_nodes = node.to_xml();
+
+        for (Edges::iterator edge = _edges.begin(); edge != _edges.end(); edge++) {
+            node = find_node(edge -> begin_id);
+
+            if (edge -> way == current_way) {
+                xml_nodes += node.to_xml();
+                distance_on_current_way += edge -> length();
+            }
+            else {
+                *xml_ways += current_way.to_xml(distance_on_current_way, xml_nodes);
+
+                xml_nodes.clear();
+                xml_nodes = node.to_xml();
+
+                node = find_node(edge -> end_id);
+                xml_nodes += node.to_xml();
+
+                distance_on_current_way = edge -> length();
+                current_way = edge -> way;
+            }
+        }
+        
+        *xml_ways += current_way.to_xml(distance_on_current_way, xml_nodes);
+    }
+
+    return *xml_ways;
+}
+
+Node Path::find_node(const string &id) {
+    return _nodes_by_id[id];
+}
+
+string & Path::to_xml() {
+    string *xml = new string("<path>\n" + xml_ways() + "</path>\n");
+    return *xml;
 }
 
 Nodes Path::nodes() {

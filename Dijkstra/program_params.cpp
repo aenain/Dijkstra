@@ -54,6 +54,6 @@ void ProgramParams::wrong_nodes() {
 
 void ProgramParams::wrong_arguments() {
     cout << "Examples of usage:\n"
-    << "~/Desktop/Dijkstra.debug 50.0661049 19.8271709 50.0696368 19.8287717 ~/Downloads/olszanica.osm\n"
-    << "~/Desktop/Dijkstra.debug 1088843921 390856288 ~/Downloads/olszanica.osm" << endl;
+    << "./Dijkstra.debug 50.0661049 19.8271709 50.0696368 19.8287717 ~/Downloads/olszanica.osm\n"
+    << "./Dijkstra.debug 1088843921 390856288 ~/Downloads/olszanica.osm" << endl;
 }

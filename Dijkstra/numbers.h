@@ -31,14 +31,17 @@ namespace Numbers {
         return (-Numbers::EPSILON < difference && difference <= 0) || (0 <= difference && difference < Numbers::EPSILON);
     }
 
-    inline Distance to_f(const std::string & literal) {
-        return atof(literal.c_str());
-        //return boost::lexical_cast<Distance>(literal);
+    inline Distance to_f(const string &literal) {
+        istringstream str(literal);
+        Distance result;
+
+        str >> result;
+        return result;
     }
 
-    inline Distance to_f(const char * literal) {
-        return atof(literal);
-        //return boost::lexical_cast<Distance>(literal);
+    inline Distance to_f(const char *literal) {
+        string str(literal);
+        return to_f(str);
     }
 
     inline Coordinate in_range(const Coordinate &value, const Coordinate &minimum, const Coordinate &maximum) {
@@ -61,6 +64,7 @@ namespace Numbers {
 
     inline string to_s(Distance distance, const int precision = PRINT_PRECISION) {
         ostringstream stream;
+
         stream << with_precision(distance, precision);
         return stream.str();
     }

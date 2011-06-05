@@ -39,6 +39,15 @@ void Node::mark_as_visited() {
     _completely_computed = true;
 }
 
+string & Node::to_xml() const {
+    string lat = Numbers::to_s(location.latitude, 7);
+    string lon = Numbers::to_s(location.longitude, 7);
+
+    string *xml = new string("\t\t<node id='" + id + "' lat='" + lat + "' lon='" + lon + "' />\n");
+
+    return *xml;
+}
+
 bool operator<(const Node &a, const Node &b) {
     return (a.weight > b.weight);
 }

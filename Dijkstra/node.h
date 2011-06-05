@@ -37,6 +37,7 @@ public:
     bool valid() const;
     bool visited() const;
     void mark_as_visited();
+    string & to_xml() const;
 
 private:
     bool _completely_computed;

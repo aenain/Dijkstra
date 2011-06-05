@@ -22,6 +22,12 @@ bool Way::oneway() const {
     return _oneway;
 }
 
+string & Way::to_xml(const Distance distance, const string &xml_nodes) const {
+    string *xml = new string("\t<way id='" + id() + "' name='" + name() + "' distance='" + Numbers::to_s(distance) + "'>\n" + xml_nodes + "\t</way>\n");
+
+    return *xml;
+}
+
 bool operator==(Way & a, Way & b) {
     return a.id() == b.id();
 }
