@@ -21,11 +21,27 @@ Node ProgramParams::end_node() {
     return _end_node;
 }
 
+bool ProgramParams::write_to_xml() {
+    return _write_to_xml;
+}
+
+string ProgramParams::xml_output_file() {
+    return _xml_output_file;
+}
+
 string ProgramParams::open_street_map_source_file() {
     return _open_street_map_source_file;
 }
 
+// TODO! refactor this method.
 void ProgramParams::validate_after_create(int argc, const char * argv[]) {
+    if (argc == ProgramParams::VALID_PARAMS_NUMBER_WITH_NODE_IDS_AND_OUTPUT || argc == ProgramParams::VALID_PARAMS_NUMBER_WITH_COORDINATES_AND_OUTPUT) {
+        argc--; // "removing last argument"
+        _xml_output_file = argv[argc];
+        _xml_output_file.erase(0, 9); // "removing '--output='"
+        _write_to_xml = true;
+    }
+
     if (argc == ProgramParams::VALID_PARAMS_NUMBER_WITH_COORDINATES) {
         Location begin_location(Numbers::to_f(argv[1]), Numbers::to_f(argv[2]));
         Location end_location(Numbers::to_f(argv[3]), Numbers::to_f(argv[4]));
