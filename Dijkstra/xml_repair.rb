@@ -1,7 +1,7 @@
 #!/Users/arturhebda/.rvm/rubies/ruby-1.9.2-p180/bin/ruby
 
 dir = File.join %w{ / Users arturhebda Downloads }
-file_name = ARGV.first || "osm_tests.xml"
+file_name = ARGV.first || "map.osm"
 file = File.join(dir, file_name)
 
 puts "Reading file..."
