@@ -12,15 +12,15 @@
 #include "shortest_path_finder.h"
 using namespace std;
 
-//  ./Dijkstra.debug 50.0661049 19.8271709 50.0696368 19.8287717 ~/Downloads/olszanica.osm [--output=~/Desktop/path.xml]
-// ./Dijkstra.debug 1088843921 390856288 ~/Downloads/olszanica.osm [--output=~/Desktop/path.xml]
+//  ./Dijkstra.debug 50.0661049 19.8271709 50.0696368 19.8287717 ~/Downloads/olszanica.osm [-o ~/Desktop/path.xml]
+// ./Dijkstra.debug 1088843921 390856288 ~/Downloads/olszanica.osm [-o ~/Desktop/path.xml]
 
 int main (int argc, const char *argv[]) {
     ProgramParams params(argc, argv); // latitude, longitude or only node_id
 
     if (params.valid()) {
         OpenStreetMap open_street_map;
-        open_street_map.parse_file(params.open_street_map_source_file());
+        open_street_map.parse_file(params.map_source_file());
 
         if (open_street_map.include(params.begin_node()) && open_street_map.include(params.end_node())) {
             Node begin = params.begin_node();
@@ -31,19 +31,19 @@ int main (int argc, const char *argv[]) {
 
             ShortestPathFinder shortest_path_finder(open_street_map.nodes());
 
-            if (params.write_to_xml()) {
-                shortest_path_finder.between(begin, end).write_to_file(params.xml_output_file());
+            if (params.write_to_file()) {
+                shortest_path_finder.between(begin, end).write_to_file(params.output_file());
             }
             else {
                 shortest_path_finder.between(begin, end).print();
             }
         }
         else {
-            params.wrong_nodes();
+            params.print_wrong_nodes_info();
         }
     }
     else {
-        params.wrong_arguments();
+        params.print_usage_help();
     }
     return 0;
 }
