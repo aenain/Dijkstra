@@ -20,23 +20,23 @@ using namespace std;
 
 class OpenStreetMap {
 public:
-    void parse_file(const string & source_file);
+    void parse_file(const string &source_file);
     void fill_up_information_about_node(Node &node);
-    bool include(const Node & node);
+    bool include(const Node &node);
     NodeMap nodes();
-    OpenStreetMap() : _minimum(0, 0), _maximum(0, 0) {}; // TODO! zaincjalizować _nodes
+    OpenStreetMap() : _minimum(0, 0), _maximum(0, 0) {};
 
 private:
     string _source_file;
     Location _minimum, _maximum; // range of map
     NodeMap _nodes;
 
-    void read_file_into_string(const string & source_file, string & xml);
+    void read_file_into_string(const string &source_file, string &xml);
 
     NodeMap fetch_nodes(const XMLNode xml_tree);
     void fetch_and_build_nodes_edges(const XMLNode xml_tree);
 
-    void build_nodes_edges_in_way(vector<string> node_ids, const Way & way);
+    void build_nodes_edges_in_way(vector<string> node_ids, const Way &way);
 
     void fetch_and_set_map_range(const XMLNode xml_tree);
     bool in_map_range(const Node &node);

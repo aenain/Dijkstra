@@ -50,7 +50,7 @@ NodeMap OpenStreetMap::nodes() {
     return _nodes;
 }
 
-void OpenStreetMap::parse_file(const string & source_file) {
+void OpenStreetMap::parse_file(const string &source_file) {
     string xml;
     read_file_into_string(source_file, xml);
     XMLNode xml_tree = XML::BuildTree(xml);
@@ -64,12 +64,17 @@ void OpenStreetMap::parse_file(const string & source_file) {
     fetch_and_build_nodes_edges(xml_tree);
 }
 
-void OpenStreetMap::read_file_into_string(const string & source_file, string & xml) {
+void OpenStreetMap::read_file_into_string(const string &source_file, string &xml) {
     ifstream source;
     string line;
     source.open(source_file.c_str(), ios::in);
-    while (getline(source, line)) {
-        xml += line;
+
+    if (source.is_open()) {
+        while (getline(source, line)) {
+            xml += line;
+        }
+
+        source.close();
     }
 }
 
@@ -123,10 +128,10 @@ string OpenStreetMap::fetch_way_name(const XMLNode xml_way) {
 }
 
 bool OpenStreetMap::check_if_way_is_oneway(const XMLNode xml_way) {
-    XMLNode tag_with_oneway = XML::ChildWithProperty(xml_way, "tag", "k", "oneway");
+    XMLNode tag_with_oneway_info = XML::ChildWithProperty(xml_way, "tag", "k", "oneway");
 
-    if (tag_with_oneway) {
-        return (XML::Property(tag_with_oneway, "v") == "yes");
+    if (tag_with_oneway_info) {
+        return (XML::Property(tag_with_oneway_info, "v") == "yes");
     }
 
     return false;
@@ -146,7 +151,7 @@ vector<string> OpenStreetMap::fetch_way_node_ids(const XMLNode xml_way) {
     return way_node_ids;
 }
 
-void OpenStreetMap::build_nodes_edges_in_way(vector<string> way_node_ids, const Way & way) {
+void OpenStreetMap::build_nodes_edges_in_way(vector<string> way_node_ids, const Way &way) {
     Node *current, *other;
 
     for (int i = 0; i < way_node_ids.size(); i++) {
