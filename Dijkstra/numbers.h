@@ -12,36 +12,29 @@
 #include <cstdlib>
 #include <string>
 #include <sstream>
-//#include <boost/lexical_cast.hpp>
 using namespace std;
 
 typedef double Distance;
 typedef Distance Coordinate;
 
 namespace Numbers {
-    //const Distance MAXIMUM = 4294967295;
     const Distance MAXIMUM = 2000000000;
     const int PRECISION = 7;
     const int PRINT_PRECISION = 2;
     const Distance EPSILON = pow(0.1, PRECISION);
     const Coordinate PI = 3.141592653589793;
 
-    inline bool are_equal(const Distance & a, const Distance & b) {
+    inline bool are_equal(const Distance &a, const Distance &b) {
         Distance difference = a - b;
         return (-Numbers::EPSILON < difference && difference <= 0) || (0 <= difference && difference < Numbers::EPSILON);
     }
 
     inline Distance to_f(const string &literal) {
-        istringstream str(literal);
-        Distance result;
-
-        str >> result;
-        return result;
+        return atof(literal.c_str());
     }
 
     inline Distance to_f(const char *literal) {
-        string str(literal);
-        return to_f(str);
+        return atof(literal);
     }
 
     inline Coordinate in_range(const Coordinate &value, const Coordinate &minimum, const Coordinate &maximum) {
@@ -65,6 +58,8 @@ namespace Numbers {
     inline string to_s(Distance distance, const int precision = PRINT_PRECISION) {
         ostringstream stream;
 
+        stream.precision(precision);
+        stream.setf(ios::fixed, ios::floatfield);
         stream << with_precision(distance, precision);
         return stream.str();
     }
