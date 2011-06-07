@@ -22,9 +22,6 @@ Path ShortestPathFinder::between(const Node &begin_node, const Node &end_node) {
         Node current = _nodes_queue.top();
         _nodes_queue.pop();
 
-        if (current == end)
-            break;
-
         if (! current.visited()) {
             current.mark_as_visited();
             nodes_to_compute_count--;
@@ -34,6 +31,9 @@ Path ShortestPathFinder::between(const Node &begin_node, const Node &end_node) {
 
             previous = current;
         }
+        
+        if (current == end)
+            break;
     }
 
     Path path(_nodes, end);
