@@ -157,6 +157,7 @@
 		717AE956139103210023675F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = AdTaily;
 			};
 			buildConfigurationList = 717AE959139103210023675F /* Build configuration list for PBXProject "Dijkstra" */;
